@@ -1,9 +1,8 @@
 {
-  {
-    "name": "client",
-    "version": "0.1.0",
-    "private": true,
-    "homepage": "https://Wewe1988.github.io/Ispeak",
+  "name": "client",
+  "version": "0.1.0",
+  "private": true,
+  "homepage": "https://Wewe1988.github.io/Ispeak",
   "dependencies": {
     "@emotion/react": "^11.13.3",
     "@emotion/styled": "^11.13.0",
@@ -53,8 +52,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "gh-pages": "^6.2.0"
   }
 }
