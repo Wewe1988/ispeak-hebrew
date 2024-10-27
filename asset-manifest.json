@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.css": "./static/css/main.e6c13ad2.css",
-    "main.js": "./static/js/main.6344e46f.js",
-    "index.html": "./index.html",
-    "main.e6c13ad2.css.map": "./static/css/main.e6c13ad2.css.map",
-    "main.6344e46f.js.map": "./static/js/main.6344e46f.js.map"
+    "main.css": "/ispeak-hebrew/static/css/main.e6c13ad2.css",
+    "main.js": "/ispeak-hebrew/static/js/main.6344e46f.js",
+    "index.html": "/ispeak-hebrew/index.html",
+    "main.e6c13ad2.css.map": "/ispeak-hebrew/static/css/main.e6c13ad2.css.map",
+    "main.6344e46f.js.map": "/ispeak-hebrew/static/js/main.6344e46f.js.map"
   },
   "entrypoints": [
     "static/css/main.e6c13ad2.css",
