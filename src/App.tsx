@@ -1,14 +1,19 @@
-// בראש App.tsx
-import { db, auth } from './firebase/config';
+// src/App.tsx
 import React, { useState } from 'react';
+import { HashRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { CssBaseline } from '@mui/material';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Welcome from './components/Welcome';
 import Exam from './components/Exam';
 import { TeacherDashboard } from './components/teacher';
+import { db, auth } from './firebase/config';
 
-// הגדרת ערכת נושא
+type StudentInfo = {
+  name: string;
+  class: string;
+  teacher: string;
+};
+
 const theme = createTheme({
   direction: 'rtl',
   typography: {
@@ -24,13 +29,6 @@ const theme = createTheme({
   },
 });
 
-// הגדרת טיפוס למידע של התלמיד
-type StudentInfo = {
-  name: string;
-  class: string;
-  teacher: string;
-};
-
 function App() {
   const [examStarted, setExamStarted] = useState(false);
   const [studentInfo, setStudentInfo] = useState<StudentInfo | null>(null);
@@ -40,27 +38,23 @@ function App() {
     setExamStarted(true);
   };
 
-  const StudentExamComponent = () => {
-    return examStarted && studentInfo ? (
-      <Exam studentInfo={studentInfo} />
-    ) : (
-      <Welcome onStartExam={handleStartExam} />
-    );
-  };
-
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <Router>
         <Routes>
-          {/* נתיב ברירת מחדל למבחן תלמיד */}
-          <Route path="/" element={<StudentExamComponent />} />
-          
-          {/* נתיב לממשק המורה */}
+          <Route 
+            path="/" 
+            element={
+              examStarted && studentInfo ? (
+                <Exam studentInfo={studentInfo} />
+              ) : (
+                <Welcome onStartExam={handleStartExam} />
+              )
+            } 
+          />
           <Route path="/teacher" element={<TeacherDashboard />} />
-          
-          {/* הפניה מחדש לדף הבית עבור נתיבים לא קיימים */}
-          <Route path="*" element={<Navigate to="/" replace />} />
+          <Route path="*" element={<Navigate to="/" />} />
         </Routes>
       </Router>
     </ThemeProvider>
