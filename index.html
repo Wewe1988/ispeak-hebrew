@@ -1,0 +1,862 @@
+
+<!DOCTYPE html><html w-tid="0"><head w-tid="1"><base href simulated-href="https://example.com" w-tid="2"/>
+    <link rel="stylesheet" href="https://api.websim.ai/fonts.css?v=9aace09f0f5394dbbd4ca3519e1721054d22624e">
+    <link rel="stylesheet" href="https://api.websim.ai/ctxmenu.css?v=9aace09f0f5394dbbd4ca3519e1721054d22624e">
+    <script class="websim-injected">__WEBSIM_DATA__={"locationKey":"_e79pmuo2xq9","titleKey":"_5pdq8cqs5au","id":"h26XcxDv4sP8nqpti","url":"","hostOrigin":"https://websim.ai","features":{"context":true,"errors":true,"htmx":true,"images":false,"navigation":false},"prompt":{"type":"plaintext","text":"אני רוצה שיהיה יותר אינטרקטיבי עם אייקונים וצבעים"}}</script>
+    <script class="websim-injected" src="https://api.websim.ai/dist/index.js?v=9aace09f0f5394dbbd4ca3519e1721054d22624e"></script>
+    
+    <title w-tid="3">ISpeak - עבברית מדוברת</title>
+    <meta charset="UTF-8" w-tid="4"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" w-tid="5"/>
+    <style w-tid="6">
+    :root {
+      --primary: #2b4d7e;
+      --secondary: #4CAF50;
+      --background: #f5f5f5;
+      --text: #333;
+      direction: rtl;
+    }
+    
+    * {
+      box-sizing: border-box;
+      font-family: 'Heebo', sans-serif;
+    }
+    
+    body {
+      margin: 0;
+      padding: 20px;
+      background: var(--background);
+      color: var(--text);
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+      padding-right: 220px;
+      padding-top: 80px;
+    }
+    
+    .welcome-screen {
+      background: white;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+    
+    .login-form {
+      max-width: 500px;
+      margin: 2rem auto;
+    }
+    
+    .form-group {
+      margin-bottom: 1rem;
+    }
+    
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+    
+    .form-group input {
+      width: 100%;
+      padding: 0.5rem;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
+    
+    .start-button {
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 1rem 2rem;
+      border-radius: 25px;
+      cursor: pointer;
+      font-size: 1.1rem;
+      margin-top: 1rem;
+    }
+    
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem;
+      background: var(--primary);
+      color: white;
+      border-radius: 8px;
+    }
+    
+    .exam-timer {
+      position: fixed; 
+      top: 20px;
+      right: 220px;
+      background: rgba(255, 255, 255, 0.95);
+      padding: 1rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      z-index: 1000;
+      border: 2px solid var(--primary);
+      min-width: 120px;
+      text-align: center;
+      font-weight: bold;
+      backdrop-filter: blur(5px);
+      width: 150px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: linear-gradient(45deg, white, #f8f9fa);
+    }
+    
+    .exam-timer i {
+      font-size: 1.4em;
+      color: var(--primary);
+    }
+    
+    .main-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    
+    .section {
+      background: white;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    
+    .question {
+      margin-bottom: 2rem;
+      padding: 1rem;
+      border-right: 4px solid var(--primary);
+      background: rgba(43, 77, 126, 0.1);
+    }
+    
+    .record-button {
+      background: var(--secondary);
+      color: white;
+      border: none;
+      padding: 1rem 2rem;
+      border-radius: 25px;
+      cursor: pointer;
+      font-size: 1.1rem;
+      transition: all 0.3s ease;
+      margin: 0.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: linear-gradient(45deg, var(--secondary), #45a049);
+      box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+    }
+    
+    .record-button i {
+      font-size: 1.2em;
+    }
+    
+    .record-button.recording {
+      background: linear-gradient(45deg, #f44336, #d32f2f);
+      box-shadow: 0 4px 15px rgba(244, 67, 54, 0.3);
+    }
+    
+    .delete-button {
+      background: #f44336;
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-left: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      background: linear-gradient(45deg, #f44336, #d32f2f);
+      box-shadow: 0 4px 15px rgba(244, 67, 54, 0.2);
+    }
+    
+    .delete-button i {
+      font-size: 1em;
+    }
+    
+    .timer {
+      font-size: 1.5rem;
+      text-align: center;
+      margin: 1rem 0;
+    }
+    
+    .progress-bar {
+      width: 100%;
+      height: 10px;
+      background: #ddd;
+      border-radius: 5px;
+      overflow: hidden;
+      margin: 1rem 0;
+    }
+    
+    .progress {
+      height: 100%;
+      background: var(--primary);
+      width: 0%;
+      transition: width 0.3s ease;
+    }
+    
+    .score-display {
+      margin: 1rem 0;
+      padding: 1rem;
+      background: rgba(76, 175, 80, 0.1);
+      border-radius: 4px;
+    }
+    
+    .youtube-container {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      margin-bottom: 1rem;
+    }
+    
+    .youtube-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+    
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+    
+    .section-nav {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+    
+    .section-button {
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 1rem 2rem;
+      border-radius: 8px;
+      cursor: pointer;
+      opacity: 0.7;
+      transition: opacity 0.3s;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(45deg, var(--primary), #1a365d);
+      box-shadow: 0 4px 15px rgba(43, 77, 126, 0.2);
+    }
+    
+    .section-button i {
+      font-size: 1.2em;
+    }
+    
+    .section-button.active {
+      opacity: 1;
+    }
+    
+    .recording-segments {
+      display: flex;
+      gap: 1rem;
+      margin: 1rem 0;
+    }
+    
+    .segment {
+      padding: 0.5rem;
+      background: #eee;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: linear-gradient(45deg, #f5f5f5, #e9ecef);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    
+    .admin-panel {
+      background: white;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      margin-top: 2rem;
+    }
+    
+    .question-editor {
+      margin: 1rem 0;
+      padding: 1rem;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
+    
+    .question-editor textarea {
+      width: 100%;
+      min-height: 100px;
+      margin: 0.5rem 0;
+      padding: 0.5rem;
+    }
+    
+    .save-button {
+      background: var(--secondary);
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(45deg, var(--secondary), #45a049);
+      box-shadow: 0 4px 15px rgba(76, 175, 80, 0.2);
+    }
+    
+    .save-button i {
+      font-size: 1.2em;
+    }
+    
+    .sidebar {
+      position: fixed;
+      right: 0; 
+      top: 0;
+      height: 100vh;
+      width: 200px;
+      background: white;
+      padding: 2rem;
+      border-left: 1px solid #ddd; 
+      box-shadow: -2px 0 4px rgba(0,0,0,0.1); 
+    }
+    
+    .sidebar-nav {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    
+    .sidebar-button {
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 0.8rem;
+      border-radius: 4px;
+      cursor: pointer;
+      opacity: 0.7;
+      transition: opacity 0.3s;
+      text-align: right;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 8px;
+      background: linear-gradient(45deg, var(--primary), #1a365d);
+      box-shadow: 0 4px 15px rgba(43, 77, 126, 0.2);
+    }
+    
+    .sidebar-button i {
+      font-size: 1.2em;
+    }
+    
+    .sidebar-button.active {
+      opacity: 1;
+    }
+    
+    .recording-player {
+      margin: 1rem 0;
+      padding: 1rem;
+      background: #f5f5f5;
+      border-radius: 4px;
+    }
+    
+    .audio-player {
+      width: 100%;
+      margin: 0.5rem 0;
+      border-radius: 4px;
+      background: rgba(43, 77, 126, 0.1);
+      padding: 0.5rem;
+    }
+    
+    .recording-timer {
+      text-align: center;
+      font-size: 1.2rem;
+      margin: 0.5rem 0;
+      color: var(--primary);
+    }
+    
+    .recording-error {
+      color: #f44336;
+      margin: 0.5rem 0;
+    }
+    
+    .admin-button {
+      position: fixed;
+      top: 20px;
+      left: 20px; 
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      cursor: pointer;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(45deg, var(--primary), #1a365d);
+      box-shadow: 0 4px 15px rgba(43, 77, 126, 0.2);
+    }
+    
+    .admin-button i {
+      font-size: 1.2em;
+    }
+    
+    .admin-button:hover {
+      background: var(--secondary);
+    }
+    </style>
+    
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossOrigin="anonymous" w-tid="7"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossOrigin="anonymous" w-tid="8"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js" crossOrigin="anonymous" w-tid="9"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;700&display=swap" rel="stylesheet" w-tid="10"/>
+    </head>
+    <body w-tid="11">
+    <div id="root" w-tid="12"></div>
+    
+    <script type="text/babel" w-tid="13">const WelcomeScreen = ({
+      onStart
+    }) => {
+      const [formData, setFormData] = React.useState({
+        name: '',
+        class: '',
+        teacher: ''
+      });
+      const handleSubmit = e => {
+        e.preventDefault();
+        onStart(formData);
+      };
+      return <div className="welcome-screen">
+        <h1>ISpeak -עברית מדוברת</h1>
+        <p>
+          שלום תלמיד/ה יקר/ה, כאן צוות העברית בבית ספר תיכון בית ג'ן. 
+          ברוכים הבאים לIspeak – עברית שפה דבורה.
+        </p>
+        <p>
+          לפני שנתחיל אסביר לכם מהו מבנה ערכת התרגול וּמה אתם נדרשים לעשות. המבחן כולל שלושה פרקים:
+        </p>
+        <ul>
+          <li>בפרק הראשון תתבקשו לדבר על עצמכם בזיקה לנושא מסוים</li>
+          <li>בפרק השני תציגו את עמדתכם בנושא מסוים</li>
+          <li>בַפרק השלישי תצפו בְּסרטון ותענו על שאלות</li>
+        </ul>
+        <p>
+          כדי להקליט תשובה, לַחֲצו על הכפתור "הקלטה" וּבְסיום ההקלטה לַחֲצו על הכפתור "עצור".
+          תוכלו לשמוע את ההקלטה שלכם ובמידת הצורך להקליט מחדש את כל התשובה.
+        </p>
+        <p>
+          שימו לב, יש לכם רק שני ניסיונות הקלטה לכל תשובה. ניתן להקליט עד שני מקטעים.
+          הַקפידו על תשובות מלאות ועל שפה ברורה.
+        </p>
+        <p>
+          בצידו השמאלי העליון של המסך יופיע שעון. השעון יאפשר לכם לדעת כמה זמן נשאר לכם עד סיום המבחן.
+          משך המבחן 30 דקות.
+        </p>
+        <p>בהצלחה - מאמינים בכם תמיד!</p>
+    
+        <form className="login-form" onSubmit={handleSubmit}>
+          <div className="form-group">
+            <label>שם מלא</label>
+            <input type="text" required value={formData.name} onChange={e => setFormData({
+              ...formData,
+              name: e.target.value
+            })} />
+          </div>
+          <div className="form-group">
+            <label>כיתה</label>
+            <input type="text" required value={formData.class} onChange={e => setFormData({
+              ...formData,
+              class: e.target.value
+            })} />
+          </div>
+          <div className="form-group">
+            <label>מורה מלמד</label>
+            <input type="text" required value={formData.teacher} onChange={e => setFormData({
+              ...formData,
+              teacher: e.target.value
+            })} />
+          </div>
+          <button type="submit" className="start-button">התחל מבחן</button>
+        </form>
+      </div>;
+    };
+    const AdminPanel = ({
+      onUpdateQuestions,
+      onBack
+    }) => {
+      const [questions, setQuestions] = React.useState({
+        section1: ["שאלה 1", "שאלה 2"],
+        section2: ["שאלה 3", "שאלה 4"],
+        section3: ["שאלה 5", "שאלה 6"]
+      });
+      const [videoUrl, setVideoUrl] = React.useState('');
+      React.useEffect(() => {
+        const savedVideoUrl = localStorage.getItem('examVideoUrl');
+        if (savedVideoUrl) {
+          setVideoUrl(savedVideoUrl);
+        }
+      }, []);
+      const handleQuestionChange = (section, index, value) => {
+        const newQuestions = {
+          ...questions
+        };
+        newQuestions[section][index] = value;
+        setQuestions(newQuestions);
+      };
+      const addQuestion = section => {
+        const newQuestions = {
+          ...questions
+        };
+        newQuestions[section] = [...newQuestions[section], "שאלה חדשה"];
+        setQuestions(newQuestions);
+      };
+      const removeQuestion = (section, index) => {
+        const newQuestions = {
+          ...questions
+        };
+        newQuestions[section] = newQuestions[section].filter((_, i) => i !== index);
+        setQuestions(newQuestions);
+      };
+      const handleSave = () => {
+        let processedVideoUrl = videoUrl;
+        if (videoUrl) {
+          const youtubeRegex = /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/;
+          const match = videoUrl.match(youtubeRegex);
+          if (match && match[1]) {
+            processedVideoUrl = `https://www.youtube.com/embed/${match[1]}`;
+          }
+        }
+        localStorage.setItem('examQuestions', JSON.stringify(questions));
+        localStorage.setItem('examVideoUrl', processedVideoUrl);
+        onUpdateQuestions(questions);
+        alert('השאלות והסרטון נשמרו בהצלחה!');
+      };
+      return <div className="admin-panel">
+          <button className="sidebar-button" style={{
+          marginBottom: '20px'
+        }} onClick={onBack}>
+            <i className="fas fa-arrow-right" />
+            חזרה לדף הבית
+          </button>
+    
+          <h2>ממשק מורה - עריכת שאלות</h2>
+    
+          <div style={{
+          marginBottom: '2rem'
+        }}>
+            <h3>קישור לסרטון יוטיוב</h3>
+            <div className="form-group">
+              <input type="text" value={videoUrl} onChange={e => setVideoUrl(e.target.value)} placeholder="הכנס קישור לסרטון יוטיוב" style={{
+              width: '100%',
+              padding: '0.5rem'
+            }} />
+            </div>
+          </div>
+    
+          {Object.entries(questions).map(([section, sectionQuestions]) => <div key={section} className="question-editor">
+              <h3>פרק {section.replace('section', '')}</h3>
+              {sectionQuestions.map((question, index) => <div key={index} style={{
+            display: 'flex',
+            gap: '1rem',
+            marginBottom: '1rem'
+          }}>
+                  <textarea value={question} onChange={e => handleQuestionChange(section, index, e.target.value)} style={{
+              flex: 1
+            }} />
+                  <button onClick={() => removeQuestion(section, index)} className="delete-button">
+                    <i className="fas fa-trash" />
+                    מחיקת שאלה
+                  </button>
+                </div>)}
+              <button onClick={() => addQuestion(section)} className="save-button" style={{
+            marginTop: '1rem'
+          }}>
+                <i className="fas fa-plus" />
+                הוספת שאלה
+              </button>
+            </div>)}
+          <button className="save-button" onClick={handleSave}>
+            <i className="fas fa-save" />
+            שמירת שאלות
+          </button>
+        </div>;
+    };
+    const RecordingSection = ({
+      question,
+      onRecord,
+      recordings
+    }) => {
+      const [segments, setSegments] = React.useState([]);
+      const [isRecording, setIsRecording] = React.useState(false);
+      const [recordingTime, setRecordingTime] = React.useState(0);
+      const [errorMessage, setErrorMessage] = React.useState('');
+      const [combinedAudioUrl, setCombinedAudioUrl] = React.useState('');
+      const mediaRecorderRef = React.useRef(null);
+      const chunksRef = React.useRef([]);
+      React.useEffect(() => {
+        let interval;
+        if (isRecording) {
+          interval = setInterval(() => {
+            setRecordingTime(prev => prev + 1);
+          }, 1000);
+        }
+        return () => {
+          if (interval) {
+            clearInterval(interval);
+          }
+        };
+      }, [isRecording]);
+      React.useEffect(() => {
+        const updateCombinedAudio = async () => {
+          if (segments.length > 0) {
+            try {
+              const audioElements = await Promise.all(segments.map(async seg => {
+                const response = await fetch(seg.url);
+                const blob = await response.blob();
+                return blob;
+              }));
+              const combinedBlob = new Blob(audioElements, {
+                type: 'audio/webm'
+              });
+              const url = URL.createObjectURL(combinedBlob);
+              setCombinedAudioUrl(url);
+            } catch (error) {
+              console.error('Error combining audio segments:', error);
+              setErrorMessage('Error combining audio segments');
+            }
+          } else {
+            setCombinedAudioUrl('');
+          }
+        };
+        updateCombinedAudio();
+      }, [segments]);
+      const startRecording = async () => {
+        if (segments.length >= 2) {
+          setErrorMessage('יש לך רק שני ניסיונות הקלטה לכל תשובה');
+          return;
+        }
+        try {
+          const stream = await navigator.mediaDevices.getUserMedia({
+            audio: true
+          });
+          mediaRecorderRef.current = new MediaRecorder(stream);
+          chunksRef.current = [];
+          mediaRecorderRef.current.ondataavailable = e => {
+            chunksRef.current.push(e.data);
+          };
+          mediaRecorderRef.current.onstop = () => {
+            const blob = new Blob(chunksRef.current, {
+              type: 'audio/webm'
+            });
+            const url = URL.createObjectURL(blob);
+            setSegments(prev => [...prev, {
+              id: Date.now(),
+              url,
+              duration: recordingTime
+            }]);
+            setRecordingTime(0);
+            setErrorMessage('');
+          };
+          mediaRecorderRef.current.start();
+          setIsRecording(true);
+          setErrorMessage('');
+        } catch (err) {
+          console.error('Error accessing microphone:', err);
+          setErrorMessage('אין גישה למיקרופון');
+        }
+      };
+      const stopRecording = () => {
+        mediaRecorderRef.current.stop();
+        setIsRecording(false);
+        setErrorMessage('');
+      };
+      const deleteSegment = segmentId => {
+        setSegments(prev => prev.filter(seg => seg.id !== segmentId));
+        setErrorMessage('');
+      };
+      return <div className="question">
+        <p>{question}</p>
+        
+        {isRecording ? <div>
+            <div className="recording-timer">
+              זמן הקלטה: {recordingTime} שניות
+            </div>
+            <button className="record-button recording" onClick={stopRecording}>
+              <i className="fas fa-stop-circle" />
+              עצור
+            </button>
+          </div> : <button className="record-button" onClick={startRecording} disabled={segments.length >= 2}>
+            <i className={isRecording ? "fas fa-stop-circle" : "fas fa-microphone"} />
+            {isRecording ? 'עצור' : 'הקלט'}
+          </button>}
+    
+        {errorMessage && <div className="recording-error">{errorMessage}</div>}
+    
+        <div className="recording-segments">
+          {segments.map((segment, index) => <div key={segment.id} className="segment">
+              <i className="fas fa-headphones" />
+              <span>מקטע {index + 1}</span>
+              <audio className="audio-player" controls src={segment.url} />
+              <button className="delete-button" onClick={() => deleteSegment(segment.id)}>
+                <i className="fas fa-trash" />
+                מחיקה
+              </button>
+            </div>)}
+        </div>
+    
+        {segments.length > 0 && <div className="recording-player">
+            <h4>הקלטה:</h4>
+            <audio className="audio-player" controls src={combinedAudioUrl} />
+          </div>}
+      </div>;
+    };
+    const ExamApp = () => {
+      const [started, setStarted] = React.useState(false);
+      const [studentInfo, setStudentInfo] = React.useState(null);
+      const [currentSection, setCurrentSection] = React.useState(1);
+      const [examTimer, setExamTimer] = React.useState(30 * 60);
+      const [isAdmin, setIsAdmin] = React.useState(false);
+      const [questions, setQuestions] = React.useState({
+        section1: ["שאלה 1", "שאלה 2"],
+        section2: ["שאלה 3", "שאלה 4"],
+        section3: ["שאלה 5", "שאלה 6"]
+      });
+      const [videoUrl, setVideoUrl] = React.useState('');
+      React.useEffect(() => {
+        const savedQuestions = localStorage.getItem('examQuestions');
+        if (savedQuestions) {
+          setQuestions(JSON.parse(savedQuestions));
+        }
+      }, []);
+      React.useEffect(() => {
+        const savedVideoUrl = localStorage.getItem('examVideoUrl');
+        if (savedVideoUrl) {
+          setVideoUrl(savedVideoUrl);
+        }
+      }, []);
+      React.useEffect(() => {
+        if (started) {
+          const timer = setInterval(() => {
+            setExamTimer(prev => {
+              if (prev <= 0) {
+                clearInterval(timer);
+                return 0;
+              }
+              return prev - 1;
+            });
+          }, 1000);
+          return () => clearInterval(timer);
+        }
+      }, [started]);
+      const formatTime = seconds => {
+        const mins = Math.floor(seconds / 60);
+        const secs = seconds % 60;
+        return `${mins}:${secs.toString().padStart(2, '0')}`;
+      };
+      const handleStart = formData => {
+        setStudentInfo(formData);
+        setStarted(true);
+      };
+      const goToHome = () => {
+        setStarted(false);
+        setStudentInfo(null);
+        setCurrentSection(1);
+      };
+      const toggleAdmin = () => {
+        setIsAdmin(true);
+      };
+      const handleAdminExit = () => {
+        setIsAdmin(false);
+      };
+      const renderSidebar = () => <div className="sidebar">
+          <h2>תפריט</h2>
+          <div className="sidebar-nav">
+            <button className="sidebar-button" onClick={goToHome}>
+              <i className="fas fa-home" />
+              חזרה לדף הבית
+            </button>
+            {started && [1, 2, 3].map(section => <button key={section} className={`sidebar-button ${currentSection === section ? 'active' : ''}`} onClick={() => setCurrentSection(section)}>
+                <i className="fas fa-book-open" />
+                פרק {section}
+              </button>)}
+          </div>
+        </div>;
+      if (isAdmin) {
+        return <AdminPanel onUpdateQuestions={setQuestions} onBack={handleAdminExit} />;
+      }
+      if (!started) {
+        return <div>
+            <button className="admin-button" onClick={toggleAdmin}>
+              <i className="fas fa-user-cog" />
+              ממשק מורה
+            </button>
+            <WelcomeScreen onStart={handleStart} />
+          </div>;
+      }
+      return <div>
+          {renderSidebar()}
+          <div className="exam-timer">
+            <i className="fas fa-clock" />
+            זמן נותר: {formatTime(examTimer)}
+          </div>
+          <div className="container">
+            <nav className="nav">
+              <h1>בחינה בעל פה - עברית</h1>
+              <div>
+                {studentInfo ? `${studentInfo.name} | כיתה ${studentInfo.class}` : ''}
+              </div>
+            </nav>
+    
+            <div className="section-nav">
+              {[1, 2, 3].map(section => <button key={section} className={`section-button ${currentSection === section ? 'active' : ''}`} onClick={() => setCurrentSection(section)}>
+                  <i className="fas fa-book" />
+                  פרק {section}
+                </button>)}
+            </div>
+    
+            <div className="main-content">
+              {currentSection === 1 && <div className="section">
+                  <h2>פרק ראשון - הצגה עצמית / היכרות</h2>
+                  {questions.section1.map((question, index) => <RecordingSection key={index} question={question} />)}
+                </div>}
+    
+              {currentSection === 2 && <div className="section">
+                  <h2>פרק שני - יצוג עמדה</h2>
+                  {questions.section2.map((question, index) => <RecordingSection key={index} question={question} />)}
+                </div>}
+    
+              {currentSection === 3 && <div className="section">
+                  <h2>פרק שלישי - צפייה בסרטון וענות על שאלות</h2>
+                  {videoUrl && <div className="youtube-container">
+                    <iframe width="560" height="315" src={videoUrl} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen />
+                  </div>}
+                  {questions.section3.map((question, index) => <RecordingSection key={index} question={question} />)}
+                </div>}
+            </div>
+            
+            <div className="score-display">
+              <h3>ציון</h3>
+              <p>פרק ראשון: 35 נקודות</p>
+              <p>פרק שני: 35 נקודות</p>
+              <p>פרק שלישי: 30 נקודות</p>
+              <p>סה"כ: 100 נקודות</p>
+            </div>
+          </div>
+        </div>;
+    };
+    ReactDOM.render(<ExamApp />, document.getElementById('root'));</script>
+    
+    </body></html>
