@@ -1,14 +1,15 @@
 
 <!DOCTYPE html><html w-tid="0"><head w-tid="1"><base href simulated-href="https://example.com" w-tid="2"/>
-    <link rel="stylesheet" href="https://api.websim.ai/fonts.css?v=9aace09f0f5394dbbd4ca3519e1721054d22624e">
-    <link rel="stylesheet" href="https://api.websim.ai/ctxmenu.css?v=9aace09f0f5394dbbd4ca3519e1721054d22624e">
-    <script class="websim-injected">__WEBSIM_DATA__={"locationKey":"_e79pmuo2xq9","titleKey":"_5pdq8cqs5au","id":"h26XcxDv4sP8nqpti","url":"","hostOrigin":"https://websim.ai","features":{"context":true,"errors":true,"htmx":true,"images":false,"navigation":false},"prompt":{"type":"plaintext","text":"אני רוצה שיהיה יותר אינטרקטיבי עם אייקונים וצבעים"}}</script>
-    <script class="websim-injected" src="https://api.websim.ai/dist/index.js?v=9aace09f0f5394dbbd4ca3519e1721054d22624e"></script>
+    <link rel="stylesheet" href="https://api.websim.ai/fonts.css?v=c5a9ba3e40ada4db54e4d2755b0b684f9266922b">
+    <link rel="stylesheet" href="https://api.websim.ai/ctxmenu.css?v=c5a9ba3e40ada4db54e4d2755b0b684f9266922b">
+    <script class="websim-injected">__WEBSIM_DATA__={"locationKey":"_hobk571bmeh","titleKey":"_6vg3n3m7246","id":"0HkDjIJ1ektFexBWS","url":"","hostOrigin":"https://websim.ai","features":{"context":true,"errors":true,"htmx":true,"images":false,"navigation":true},"prompt":{"type":"plaintext","text":"הבקשה לא נשלחת  למייל weyame10@gmail.com \nוברגע שמקישים את הפרטים הגישה נפתחת ללא אישור"}}</script>
+    <script class="websim-injected" src="https://api.websim.ai/dist/index.js?v=c5a9ba3e40ada4db54e4d2755b0b684f9266922b"></script>
     
-    <title w-tid="3">ISpeak - עבברית מדוברת</title>
+    <title w-tid="3">ISpeak - עברית מדוברת מבחן</title>
     <meta charset="UTF-8" w-tid="4"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" w-tid="5"/>
-    <style w-tid="6">
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;700&display=swap" rel="stylesheet" w-tid="6"/>
+    <style w-tid="7">
     :root {
       --primary: #2b4d7e;
       --secondary: #4CAF50;
@@ -46,7 +47,16 @@
       text-align: center;
     }
     
-    .login-form {
+    .access-request-screen {
+      background: white;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+    
+    .access-request-form {
       max-width: 500px;
       margin: 2rem auto;
     }
@@ -60,7 +70,7 @@
       margin-bottom: 0.5rem;
     }
     
-    .form-group input {
+    .form-group input, .form-group textarea {
       width: 100%;
       padding: 0.5rem;
       border: 1px solid #ddd;
@@ -76,6 +86,8 @@
       cursor: pointer;
       font-size: 1.1rem;
       margin-top: 1rem;
+      background: linear-gradient(45deg, var(--primary), #1a365d);
+      box-shadow: 0 4px 15px rgba(43, 77, 126, 0.2);
     }
     
     .nav {
@@ -417,188 +429,487 @@
     .admin-button:hover {
       background: var(--secondary);
     }
+    
+    /* Add new mobile responsive CSS */
+    @media screen and (max-width: 768px) {
+      .container {
+        padding: 10px;
+        padding-top: 60px;
+        padding-right: 10px; /* Remove sidebar padding on mobile */
+      }
+    
+      .main-content {
+        grid-template-columns: 1fr; /* Stack content vertically on mobile */
+        gap: 1rem;
+      }
+    
+      .exam-timer {
+        right: 10px;
+        width: 120px;
+        font-size: 0.9em;
+        padding: 0.5rem;
+      }
+    
+      .sidebar {
+        display: none; /* Hide sidebar on mobile */
+      }
+    
+      .section-nav {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+    
+      .section-button {
+        width: 100%;
+        padding: 0.8rem;
+        font-size: 0.9em;
+      }
+    
+      .recording-segments {
+        flex-direction: column;
+      }
+    
+      .segment {
+        width: 100%;
+      }
+    
+      .admin-button {
+        top: 10px;
+        left: 10px;
+        font-size: 0.9em;
+        padding: 0.4rem 0.8rem;
+      }
+    
+      .welcome-screen, .access-request-screen {
+        padding: 1rem;
+      }
+    
+      .login-form, .access-request-form {
+        padding: 0 1rem;
+      }
+    
+      /* Update form elements for better mobile experience */
+      .form-group input, .form-group textarea {
+        font-size: 16px; /* Prevent iOS zoom on input focus */
+        padding: 0.8rem;
+      }
+    
+      .record-button {
+        width: 100%;
+        margin: 0.5rem 0;
+      }
+    
+      .youtube-container {
+        margin: 1rem 0;
+      }
+    
+      /* Make admin panel mobile friendly */
+      .admin-panel {
+        padding: 1rem;
+      }
+    
+      .question-editor {
+        padding: 0.5rem;
+      }
+    
+      .question-editor textarea {
+        font-size: 16px;
+      }
+    
+      /* Add mobile menu button */
+      .mobile-menu-button {
+        position: fixed;
+        right: 10px;
+        bottom: 20px;
+        background: var(--primary);
+        color: white;
+        border: none;
+        padding: 1rem;
+        border-radius: 50%;
+        width: 60px;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        z-index: 1000;
+        cursor: pointer;
+      }
+    
+      /* Mobile navigation menu */
+      .mobile-nav {
+        position: fixed;
+        bottom: 90px;
+        right: 10px;
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        padding: 1rem;
+        z-index: 999;
+      }
+    
+      .mobile-nav button {
+        width: 100%;
+        margin: 0.5rem 0;
+        text-align: right;
+      }
+    }
     </style>
-    
-    <script src="https://unpkg.com/react@17/umd/react.development.js" crossOrigin="anonymous" w-tid="7"></script>
-    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossOrigin="anonymous" w-tid="8"></script>
-    <script src="https://unpkg.com/babel-standalone@6/babel.min.js" crossOrigin="anonymous" w-tid="9"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;700&display=swap" rel="stylesheet" w-tid="10"/>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossOrigin="anonymous" w-tid="8"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossOrigin="anonymous" w-tid="9"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js" crossOrigin="anonymous" w-tid="10"></script>
+    <script src="https://unpkg.com/websim-socket@latest/dist/websim-socket.min.js" crossOrigin="anonymous" w-tid="11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js" crossOrigin="anonymous" w-tid="12"></script>
+    <script w-tid="13">
+      (function(){
+        emailjs.init("YOUR_USER_ID"); // Replace 'YOUR_USER_ID' with your actual EmailJS user ID
+      })();
+    </script>
     </head>
-    <body w-tid="11">
-    <div id="root" w-tid="12"></div>
+    <body w-tid="14">
+    <div id="root" w-tid="15"></div>
     
-    <script type="text/babel" w-tid="13">const WelcomeScreen = ({
-      onStart
-    }) => {
+    <script type="text/babel" w-tid="16">
+    const room = new WebsimSocket();
+    
+    const AccessRequestScreen = ({ onAccessRequestSent }) => {
+      const [formData, setFormData] = React.useState({
+        name: '',
+        email: '',
+        reason: ''
+      });
+    
+      const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+          await room.collection('access_requests').create({
+            name: formData.name,
+            email: formData.email,
+            reason: formData.reason,
+            clientId: room.party.client.id,
+            approved: false
+          });
+          
+          // Send email using EmailJS
+          const templateParams = {
+            to_email: 'weyame10@gmail.com',
+            from_name: formData.name,
+            from_email: formData.email,
+            reason: formData.reason
+          };
+    
+          emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', templateParams)
+            .then((response) => {
+              console.log('SUCCESS!', response.status, response.text);
+            }, (err) => {
+              console.error('FAILED...', err);
+            });
+    
+          alert('בקשת הגישה נשלחה למערכת. המתן לאישור.');
+          onAccessRequestSent();
+        } catch (error) {
+          console.error('Error sending access request:', error);
+          alert('אירעה שגיאה בשליחת הבקשה.');
+        }
+      };
+    
+      return (
+        <div className="access-request-screen">
+          <h1>בקשת גישה למערכת</h1>
+          <p>על מנת להשתמש במערכת, אנא מלאו את הטופס הבא ואנחנו נשלח לכם אישור גישה בהקדם.</p>
+          <form className="access-request-form" onSubmit={handleSubmit}>
+            <div className="form-group">
+              <label>שם מלא</label>
+              <input 
+                type="text" 
+                required 
+                value={formData.name} 
+                onChange={e => setFormData({ ...formData, name: e.target.value })} 
+              />
+            </div>
+            <div className="form-group">
+              <label>אימייל</label>
+              <input 
+                type="email" 
+                required 
+                value={formData.email} 
+                onChange={e => setFormData({ ...formData, email: e.target.value })} 
+              />
+            </div>
+            <div className="form-group">
+              <label>סיבה לבקשת הגישה</label>
+              <textarea 
+                required 
+                value={formData.reason} 
+                onChange={e => setFormData({ ...formData, reason: e.target.value })} 
+                placeholder="הסבר קצר מדוע ברצונך להשתמש במערכת..."
+              ></textarea>
+            </div>
+            <button type="submit" className="start-button">
+              שלח בקשה
+            </button>
+          </form>
+        </div>
+      );
+    };
+    
+    const WelcomeScreen = ({ onStart }) => {
       const [formData, setFormData] = React.useState({
         name: '',
         class: '',
         teacher: ''
       });
-      const handleSubmit = e => {
+    
+      const handleSubmit = (e) => {
         e.preventDefault();
         onStart(formData);
       };
-      return <div className="welcome-screen">
-        <h1>ISpeak -עברית מדוברת</h1>
-        <p>
-          שלום תלמיד/ה יקר/ה, כאן צוות העברית בבית ספר תיכון בית ג'ן. 
-          ברוכים הבאים לIspeak – עברית שפה דבורה.
-        </p>
-        <p>
-          לפני שנתחיל אסביר לכם מהו מבנה ערכת התרגול וּמה אתם נדרשים לעשות. המבחן כולל שלושה פרקים:
-        </p>
-        <ul>
-          <li>בפרק הראשון תתבקשו לדבר על עצמכם בזיקה לנושא מסוים</li>
-          <li>בפרק השני תציגו את עמדתכם בנושא מסוים</li>
-          <li>בַפרק השלישי תצפו בְּסרטון ותענו על שאלות</li>
-        </ul>
-        <p>
-          כדי להקליט תשובה, לַחֲצו על הכפתור "הקלטה" וּבְסיום ההקלטה לַחֲצו על הכפתור "עצור".
-          תוכלו לשמוע את ההקלטה שלכם ובמידת הצורך להקליט מחדש את כל התשובה.
-        </p>
-        <p>
-          שימו לב, יש לכם רק שני ניסיונות הקלטה לכל תשובה. ניתן להקליט עד שני מקטעים.
-          הַקפידו על תשובות מלאות ועל שפה ברורה.
-        </p>
-        <p>
-          בצידו השמאלי העליון של המסך יופיע שעון. השעון יאפשר לכם לדעת כמה זמן נשאר לכם עד סיום המבחן.
-          משך המבחן 30 דקות.
-        </p>
-        <p>בהצלחה - מאמינים בכם תמיד!</p>
     
-        <form className="login-form" onSubmit={handleSubmit}>
-          <div className="form-group">
-            <label>שם מלא</label>
-            <input type="text" required value={formData.name} onChange={e => setFormData({
-              ...formData,
-              name: e.target.value
-            })} />
-          </div>
-          <div className="form-group">
-            <label>כיתה</label>
-            <input type="text" required value={formData.class} onChange={e => setFormData({
-              ...formData,
-              class: e.target.value
-            })} />
-          </div>
-          <div className="form-group">
-            <label>מורה מלמד</label>
-            <input type="text" required value={formData.teacher} onChange={e => setFormData({
-              ...formData,
-              teacher: e.target.value
-            })} />
-          </div>
-          <button type="submit" className="start-button">התחל מבחן</button>
-        </form>
-      </div>;
+      return (
+        <div className="welcome-screen">
+          <h1>ISpeak -עברית מדוברת</h1>
+          <p>
+            שלום תלמיד/ה יקר/ה, כאן צוות העברית בבית ספר תיכון בית ג'ן. 
+            ברוכים הבאים לIspeak – עברית שפה דבורה.
+          </p>
+          <p>
+            לפני שנתחיל אסביר לכם מהו מבנה ערכת התרגול וּמה אתם נדרשים לעשות. המבחן כולל שלושה פרקים:
+          </p>
+          <ul>
+            <li>בפרק הראשון תתבקשו לדבר על עצמכם בזיקה לנושא מסוים</li>
+            <li>בפרק השני תציגו את עמדתכם בנושא מסוים</li>
+            <li>בַפרק השלישי תצפו בְּסרטון ותענו על שאלות</li>
+          </ul>
+          <p>
+            כדי להקליט תשובה, לַחֲצו על הכפתור "הקלטה" וּבְסיום ההקלטה לַחֲצו על הכפתור "עצור".
+            תוכלו לשמוע את ההקלטה שלכם ובמידת הצורך להקליט מחדש את כל התשובה.
+          </p>
+          <p>
+            שימו לב, יש לכם רק שני ניסיונות הקלטה לכל תשובה. ניתן להקליט עד שני מקטעים.
+            הַקפידו על תשובות מלאות ועל שפה ברורה.
+          </p>
+          <p>
+            בצידו השמאלי העליון של המסך יופיע שעון. השעון יאפשר לכם לדעת כמה זמן נשאר לכם עד סיום המבחן.
+            משך המבחן 30 דקות.
+          </p>
+          <p>בהצלחה - מאמינים בכם תמיד!</p>
+    
+          <form className="login-form" onSubmit={handleSubmit}>
+            <div className="form-group">
+              <label>שם מלא</label>
+              <input 
+                type="text" 
+                required 
+                value={formData.name} 
+                onChange={e => setFormData({ ...formData, name: e.target.value })} 
+              />
+            </div>
+            <div className="form-group">
+              <label>כיתה</label>
+              <input 
+                type="text" 
+                required 
+                value={formData.class} 
+                onChange={e => setFormData({ ...formData, class: e.target.value })} 
+              />
+            </div>
+            <div className="form-group">
+              <label>מורה מלמד</label>
+              <input 
+                type="text" 
+                required 
+                value={formData.teacher} 
+                onChange={e => setFormData({ ...formData, teacher: e.target.value })} 
+              />
+            </div>
+            <button type="submit" className="start-button">התחל מבחן</button>
+          </form>
+        </div>
+      );
     };
-    const AdminPanel = ({
-      onUpdateQuestions,
-      onBack
-    }) => {
+    
+    const AdminPanel = ({ onUpdateQuestions, onBack }) => {
       const [questions, setQuestions] = React.useState({
         section1: ["שאלה 1", "שאלה 2"],
         section2: ["שאלה 3", "שאלה 4"],
         section3: ["שאלה 5", "שאלה 6"]
       });
       const [videoUrl, setVideoUrl] = React.useState('');
+      const [accessRequests, setAccessRequests] = React.useState([]);
+    
       React.useEffect(() => {
-        const savedVideoUrl = localStorage.getItem('examVideoUrl');
-        if (savedVideoUrl) {
-          setVideoUrl(savedVideoUrl);
-        }
-      }, []);
-      const handleQuestionChange = (section, index, value) => {
-        const newQuestions = {
-          ...questions
+        const fetchData = async () => {
+          try {
+            const list = await room.collection('access_requests').getList();
+            setAccessRequests(list);
+          } catch (error) {
+            console.error('Error fetching access requests:', error);
+          }
         };
+        fetchData();
+    
+        const unsubscribe = room.collection('access_requests').subscribe((newRequests) => {
+          setAccessRequests(newRequests);
+        });
+    
+        return () => {
+          unsubscribe();
+        };
+      }, []);
+    
+      const handleQuestionChange = (section, index, value) => {
+        const newQuestions = { ...questions };
         newQuestions[section][index] = value;
         setQuestions(newQuestions);
       };
-      const addQuestion = section => {
-        const newQuestions = {
-          ...questions
-        };
+    
+      const addQuestion = (section) => {
+        const newQuestions = { ...questions };
         newQuestions[section] = [...newQuestions[section], "שאלה חדשה"];
         setQuestions(newQuestions);
       };
+    
       const removeQuestion = (section, index) => {
-        const newQuestions = {
-          ...questions
-        };
+        const newQuestions = { ...questions };
         newQuestions[section] = newQuestions[section].filter((_, i) => i !== index);
         setQuestions(newQuestions);
       };
-      const handleSave = () => {
+    
+      const handleSave = async () => {
         let processedVideoUrl = videoUrl;
         if (videoUrl) {
-          const youtubeRegex = /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/;
+          const youtubeRegex = /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:watch\?v=|embed\/)|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
           const match = videoUrl.match(youtubeRegex);
+          
           if (match && match[1]) {
             processedVideoUrl = `https://www.youtube.com/embed/${match[1]}`;
+          } else {
+            alert('אנא הכנס קישור תקין של יוטיוב');
+            return;
           }
         }
-        localStorage.setItem('examQuestions', JSON.stringify(questions));
-        localStorage.setItem('examVideoUrl', processedVideoUrl);
-        onUpdateQuestions(questions);
-        alert('השאלות והסרטון נשמרו בהצלחה!');
+    
+        try {
+          localStorage.setItem('examQuestions', JSON.stringify(questions));
+          localStorage.setItem('examVideoUrl', processedVideoUrl);
+          onUpdateQuestions(questions);
+          alert('השאלות והסרטון נשמרו בהצלחה!');
+        } catch (error) {
+          console.error('Error saving questions:', error);
+          alert('אירעה שגיאה בשמירת השאלות.');
+        }
       };
-      return <div className="admin-panel">
-          <button className="sidebar-button" style={{
-          marginBottom: '20px'
-        }} onClick={onBack}>
+    
+      const approveRequest = async (requestId) => {
+        try {
+          await room.collection('access_requests').update(requestId, { approved: true });
+          alert('בקשה אושרה.');
+        } catch (error) {
+          console.error('Error approving request:', error);
+          alert('אירעה שגיאה באישור הבקשה.');
+        }
+      };
+    
+      const denyRequest = async (requestId) => {
+        try {
+          await room.collection('access_requests').delete(requestId);
+          alert('בקשה נדחתה.');
+        } catch (error) {
+          console.error('Error denying request:', error);
+          alert('אירעה שגיאה בדחיית הבקשה.');
+        }
+      };
+    
+      return (
+        <div className="admin-panel">
+          <button className="sidebar-button" style={{ marginBottom: '20px' }} onClick={onBack}>
             <i className="fas fa-arrow-right" />
             חזרה לדף הבית
           </button>
     
           <h2>ממשק מורה - עריכת שאלות</h2>
     
-          <div style={{
-          marginBottom: '2rem'
-        }}>
+          <div style={{ marginBottom: '2rem' }}>
             <h3>קישור לסרטון יוטיוב</h3>
             <div className="form-group">
-              <input type="text" value={videoUrl} onChange={e => setVideoUrl(e.target.value)} placeholder="הכנס קישור לסרטון יוטיוב" style={{
-              width: '100%',
-              padding: '0.5rem'
-            }} />
+              <input 
+                type="text" 
+                value={videoUrl} 
+                onChange={e => setVideoUrl(e.target.value)} 
+                placeholder="https://www.youtube.com/watch?v=VIDEO_ID" 
+                style={{ width: '100%', padding: '0.5rem' }} 
+              />
+              <small style={{ display: 'block', marginTop: '0.5rem', color: '#666' }}>
+                קישורים תקינים לדוגמה:
+                <br/>
+                - https://www.youtube.com/watch?v=VIDEO_ID
+                <br/>
+                - https://youtu.be/VIDEO_ID
+                <br/>
+                - https://www.youtube.com/embed/VIDEO_ID
+              </small>
             </div>
           </div>
     
-          {Object.entries(questions).map(([section, sectionQuestions]) => <div key={section} className="question-editor">
+          {Object.entries(questions).map(([section, sectionQuestions]) => (
+            <div key={section} className="question-editor">
               <h3>פרק {section.replace('section', '')}</h3>
-              {sectionQuestions.map((question, index) => <div key={index} style={{
-            display: 'flex',
-            gap: '1rem',
-            marginBottom: '1rem'
-          }}>
-                  <textarea value={question} onChange={e => handleQuestionChange(section, index, e.target.value)} style={{
-              flex: 1
-            }} />
+              {sectionQuestions.map((question, index) => (
+                <div key={index} style={{ display: 'flex', gap: '1rem', marginBottom: '1rem' }}>
+                  <textarea 
+                    value={question} 
+                    onChange={e => handleQuestionChange(section, index, e.target.value)} 
+                    style={{ flex: 1 }} 
+                  />
                   <button onClick={() => removeQuestion(section, index)} className="delete-button">
                     <i className="fas fa-trash" />
                     מחיקת שאלה
                   </button>
-                </div>)}
-              <button onClick={() => addQuestion(section)} className="save-button" style={{
-            marginTop: '1rem'
-          }}>
+                </div>
+              ))}
+              <button onClick={() => addQuestion(section)} className="save-button" style={{ marginTop: '1rem' }}>
                 <i className="fas fa-plus" />
                 הוספת שאלה
               </button>
-            </div>)}
+            </div>
+          ))}
           <button className="save-button" onClick={handleSave}>
             <i className="fas fa-save" />
             שמירת שאלות
           </button>
-        </div>;
+    
+          <h2 style={{ marginTop: '3rem' }}>ניהול בקשות גישה</h2>
+          {accessRequests.length === 0 ? (
+            <p>אין בקשות גישה.</p>
+          ) : (
+            <div>
+              {accessRequests.map(request => (
+                <div key={request.id} style={{ border: '1px solid #ddd', padding: '1rem', borderRadius: '4px', marginBottom: '1rem' }}>
+                  <p><strong>שם:</strong> {request.name}</p>
+                  <p><strong>אימייל:</strong> {request.email}</p>
+                  <p><strong>סיבה:</strong> {request.reason}</p>
+                  <p><strong>סטטוס:</strong> {request.approved ? 'מאושר' : 'ממתין לאישור'}</p>
+                  {!request.approved && (
+                    <div style={{ marginTop: '1rem' }}>
+                      <button onClick={() => approveRequest(request.id)} className="record-button">
+                        <i className="fas fa-check" />
+                        לאשר
+                      </button>
+                      <button onClick={() => denyRequest(request.id)} className="delete-button">
+                        <i className="fas fa-times" />
+                        לדחות
+                      </button>
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+      );
     };
-    const RecordingSection = ({
-      question,
-      onRecord,
-      recordings
-    }) => {
+    
+    const RecordingSection = ({ question }) => {
       const [segments, setSegments] = React.useState([]);
       const [isRecording, setIsRecording] = React.useState(false);
       const [recordingTime, setRecordingTime] = React.useState(0);
@@ -606,6 +917,7 @@
       const [combinedAudioUrl, setCombinedAudioUrl] = React.useState('');
       const mediaRecorderRef = React.useRef(null);
       const chunksRef = React.useRef([]);
+    
       React.useEffect(() => {
         let interval;
         if (isRecording) {
@@ -619,6 +931,7 @@
           }
         };
       }, [isRecording]);
+    
       React.useEffect(() => {
         const updateCombinedAudio = async () => {
           if (segments.length > 0) {
@@ -628,9 +941,7 @@
                 const blob = await response.blob();
                 return blob;
               }));
-              const combinedBlob = new Blob(audioElements, {
-                type: 'audio/webm'
-              });
+              const combinedBlob = new Blob(audioElements, { type: 'audio/webm' });
               const url = URL.createObjectURL(combinedBlob);
               setCombinedAudioUrl(url);
             } catch (error) {
@@ -643,30 +954,23 @@
         };
         updateCombinedAudio();
       }, [segments]);
+    
       const startRecording = async () => {
         if (segments.length >= 2) {
           setErrorMessage('יש לך רק שני ניסיונות הקלטה לכל תשובה');
           return;
         }
         try {
-          const stream = await navigator.mediaDevices.getUserMedia({
-            audio: true
-          });
+          const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
           mediaRecorderRef.current = new MediaRecorder(stream);
           chunksRef.current = [];
           mediaRecorderRef.current.ondataavailable = e => {
             chunksRef.current.push(e.data);
           };
           mediaRecorderRef.current.onstop = () => {
-            const blob = new Blob(chunksRef.current, {
-              type: 'audio/webm'
-            });
+            const blob = new Blob(chunksRef.current, { type: 'audio/webm' });
             const url = URL.createObjectURL(blob);
-            setSegments(prev => [...prev, {
-              id: Date.now(),
-              url,
-              duration: recordingTime
-            }]);
+            setSegments(prev => [...prev, { id: Date.now(), url, duration: recordingTime }]);
             setRecordingTime(0);
             setErrorMessage('');
           };
@@ -678,52 +982,68 @@
           setErrorMessage('אין גישה למיקרופון');
         }
       };
+    
       const stopRecording = () => {
         mediaRecorderRef.current.stop();
         setIsRecording(false);
         setErrorMessage('');
       };
-      const deleteSegment = segmentId => {
+    
+      const deleteSegment = (segmentId) => {
         setSegments(prev => prev.filter(seg => seg.id !== segmentId));
         setErrorMessage('');
       };
-      return <div className="question">
-        <p>{question}</p>
-        
-        {isRecording ? <div>
-            <div className="recording-timer">
-              זמן הקלטה: {recordingTime} שניות
-            </div>
-            <button className="record-button recording" onClick={stopRecording}>
-              <i className="fas fa-stop-circle" />
-              עצור
-            </button>
-          </div> : <button className="record-button" onClick={startRecording} disabled={segments.length >= 2}>
-            <i className={isRecording ? "fas fa-stop-circle" : "fas fa-microphone"} />
-            {isRecording ? 'עצור' : 'הקלט'}
-          </button>}
     
-        {errorMessage && <div className="recording-error">{errorMessage}</div>}
-    
-        <div className="recording-segments">
-          {segments.map((segment, index) => <div key={segment.id} className="segment">
-              <i className="fas fa-headphones" />
-              <span>מקטע {index + 1}</span>
-              <audio className="audio-player" controls src={segment.url} />
-              <button className="delete-button" onClick={() => deleteSegment(segment.id)}>
-                <i className="fas fa-trash" />
-                מחיקה
+      return (
+        <div className="question">
+          <p>{question}</p>
+          
+          {isRecording ? (
+            <div>
+              <div className="recording-timer">
+                זמן הקלטה: {recordingTime} שניות
+              </div>
+              <button className="record-button recording" onClick={stopRecording}>
+                <i className="fas fa-stop-circle" />
+                עצור
               </button>
-            </div>)}
-        </div>
+            </div>
+          ) : (
+            <button className="record-button" onClick={startRecording} disabled={segments.length >= 2}>
+              <i className={isRecording ? "fas fa-stop-circle" : "fas fa-microphone"} />
+              {isRecording ? 'עצור' : 'הקלט'}
+            </button>
+          )}
     
-        {segments.length > 0 && <div className="recording-player">
-            <h4>הקלטה:</h4>
-            <audio className="audio-player" controls src={combinedAudioUrl} />
-          </div>}
-      </div>;
+          {errorMessage && <div className="recording-error">{errorMessage}</div>}
+    
+          <div className="recording-segments">
+            {segments.map((segment, index) => (
+              <div key={segment.id} className="segment">
+                <i className="fas fa-headphones" />
+                <span>מקטע {index + 1}</span>
+                <audio className="audio-player" controls src={segment.url} />
+                <button className="delete-button" onClick={() => deleteSegment(segment.id)}>
+                  <i className="fas fa-trash" />
+                  מחיקה
+                </button>
+              </div>
+            ))}
+          </div>
+    
+          {segments.length > 0 && (
+            <div className="recording-player">
+              <h4>הקלטה:</h4>
+              <audio className="audio-player" controls src={combinedAudioUrl} />
+            </div>
+          )}
+        </div>
+      );
     };
+    
     const ExamApp = () => {
+      const [hasAccess, setHasAccess] = React.useState(false);
+      const [accessRequested, setAccessRequested] = React.useState(false);
       const [started, setStarted] = React.useState(false);
       const [studentInfo, setStudentInfo] = React.useState(null);
       const [currentSection, setCurrentSection] = React.useState(1);
@@ -735,18 +1055,22 @@
         section3: ["שאלה 5", "שאלה 6"]
       });
       const [videoUrl, setVideoUrl] = React.useState('');
+      const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
+      
       React.useEffect(() => {
         const savedQuestions = localStorage.getItem('examQuestions');
         if (savedQuestions) {
           setQuestions(JSON.parse(savedQuestions));
         }
       }, []);
+      
       React.useEffect(() => {
         const savedVideoUrl = localStorage.getItem('examVideoUrl');
         if (savedVideoUrl) {
           setVideoUrl(savedVideoUrl);
         }
       }, []);
+      
       React.useEffect(() => {
         if (started) {
           const timer = setInterval(() => {
@@ -761,102 +1085,217 @@
           return () => clearInterval(timer);
         }
       }, [started]);
-      const formatTime = seconds => {
+      
+      React.useEffect(() => {
+        const unsubscribe = room.collection('access_requests').subscribe((requests) => {
+          const approved = requests.find(req => req.clientId === room.party.client.id && req.approved);
+          if (approved) {
+            setHasAccess(true);
+            setAccessRequested(false);
+          }
+        });
+        return () => {
+          unsubscribe();
+        };
+      }, []);
+      
+      const formatTime = (seconds) => {
         const mins = Math.floor(seconds / 60);
         const secs = seconds % 60;
         return `${mins}:${secs.toString().padStart(2, '0')}`;
       };
-      const handleStart = formData => {
+      
+      const handleStart = (formData) => {
         setStudentInfo(formData);
         setStarted(true);
       };
+      
+      const handleAccessRequestSent = () => {
+        setAccessRequested(true);
+        setHasAccess(false);
+      };
+      
+      const handleAccessGranted = () => {
+        setHasAccess(true);
+        setAccessRequested(false);
+      };
+      
       const goToHome = () => {
         setStarted(false);
         setStudentInfo(null);
         setCurrentSection(1);
       };
+      
       const toggleAdmin = () => {
         setIsAdmin(true);
       };
+      
       const handleAdminExit = () => {
         setIsAdmin(false);
       };
-      const renderSidebar = () => <div className="sidebar">
+      
+      const renderSidebar = () => (
+        <div className="sidebar">
           <h2>תפריט</h2>
           <div className="sidebar-nav">
             <button className="sidebar-button" onClick={goToHome}>
               <i className="fas fa-home" />
               חזרה לדף הבית
             </button>
-            {started && [1, 2, 3].map(section => <button key={section} className={`sidebar-button ${currentSection === section ? 'active' : ''}`} onClick={() => setCurrentSection(section)}>
+            {started && [1, 2, 3].map(section => (
+              <button 
+                key={section} 
+                className={`sidebar-button ${currentSection === section ? 'active' : ''}`} 
+                onClick={() => setCurrentSection(section)}
+              >
                 <i className="fas fa-book-open" />
                 פרק {section}
-              </button>)}
+              </button>
+            ))}
           </div>
-        </div>;
-      if (isAdmin) {
-        return <AdminPanel onUpdateQuestions={setQuestions} onBack={handleAdminExit} />;
-      }
-      if (!started) {
-        return <div>
-            <button className="admin-button" onClick={toggleAdmin}>
-              <i className="fas fa-user-cog" />
-              ממשק מורה
-            </button>
-            <WelcomeScreen onStart={handleStart} />
-          </div>;
-      }
-      return <div>
-          {renderSidebar()}
-          <div className="exam-timer">
-            <i className="fas fa-clock" />
-            זמן נותר: {formatTime(examTimer)}
-          </div>
-          <div className="container">
-            <nav className="nav">
-              <h1>בחינה בעל פה - עברית</h1>
-              <div>
-                {studentInfo ? `${studentInfo.name} | כיתה ${studentInfo.class}` : ''}
+        </div>
+      );
+    
+      return (
+        <div>
+          {/* Mobile Menu */}
+          {window.innerWidth <= 768 && (
+            <React.Fragment>
+              <button 
+                className="mobile-menu-button" 
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              >
+                <i className="fas fa-bars" />
+              </button>
+              
+              {mobileMenuOpen && (
+                <div className="mobile-nav">
+                  <button className="sidebar-button" onClick={goToHome}>
+                    <i className="fas fa-home" />
+                    חזרה לדף הבית
+                  </button>
+                  {started && [1, 2, 3].map(section => (
+                    <button 
+                      key={section} 
+                      className={`sidebar-button ${currentSection === section ? 'active' : ''}`}
+                      onClick={() => {
+                        setCurrentSection(section);
+                        setMobileMenuOpen(false);
+                      }}
+                    >
+                      <i className="fas fa-book-open" />
+                      פרק {section}
+                    </button>
+                  ))}
+                </div>
+              )}
+            </React.Fragment>
+          )}
+    
+          {/* Admin Panel */}
+          {isAdmin ? (
+            <AdminPanel onUpdateQuestions={setQuestions} onBack={handleAdminExit} />
+          ) : accessRequested && !hasAccess ? (
+            <div>
+              <AccessRequestScreen onAccessRequestSent={handleAccessGranted} />
+            </div>
+          ) : !hasAccess ? (
+            <div>
+              <AccessRequestScreen onAccessRequestSent={handleAccessRequestSent} />
+            </div>
+          ) : !started ? (
+            <div>
+              <button className="admin-button" onClick={toggleAdmin}>
+                <i className="fas fa-user-cog" />
+                ממשק מורה
+              </button>
+              <WelcomeScreen onStart={handleStart} />
+            </div>
+          ) : (
+            <div>
+              {renderSidebar()}
+              <div className="exam-timer">
+                <i className="fas fa-clock" />
+                זמן נותר: {formatTime(examTimer)}
               </div>
-            </nav>
+              <div className="container">
+                <nav className="nav">
+                  <h1>בחינה בעל פה - עברית</h1>
+                  <div>
+                    {studentInfo ? `${studentInfo.name} | כיתה ${studentInfo.class}` : ''}
+                  </div>
+                </nav>
     
-            <div className="section-nav">
-              {[1, 2, 3].map(section => <button key={section} className={`section-button ${currentSection === section ? 'active' : ''}`} onClick={() => setCurrentSection(section)}>
-                  <i className="fas fa-book" />
-                  פרק {section}
-                </button>)}
+                <div className="section-nav">
+                  {[1, 2, 3].map(section => (
+                    <button 
+                      key={section} 
+                      className={`section-button ${currentSection === section ? 'active' : ''}`} 
+                      onClick={() => setCurrentSection(section)}
+                    >
+                      <i className="fas fa-book" />
+                      פרק {section}
+                    </button>
+                  ))}
+                </div>
+    
+                <div className="main-content">
+                  {currentSection === 1 && (
+                    <div className="section">
+                      <h2>פרק ראשון - הצגה עצמית / היכרות</h2>
+                      {questions.section1.map((question, index) => (
+                        <RecordingSection key={index} question={question} />
+                      ))}
+                    </div>
+                  )}
+    
+                  {currentSection === 2 && (
+                    <div className="section">
+                      <h2>פרק שני - יצוג עמדה</h2>
+                      {questions.section2.map((question, index) => (
+                        <RecordingSection key={index} question={question} />
+                      ))}
+                    </div>
+                  )}
+    
+                  {currentSection === 3 && (
+                    <div className="section">
+                      <h2>פרק שלישי - צפייה בסרטון וענות על שאלות</h2>
+                      {videoUrl && (
+                        <div className="youtube-container">
+                          <iframe 
+                            width="560" 
+                            height="315" 
+                            src={videoUrl} 
+                            title="YouTube video player" 
+                            frameBorder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowFullScreen 
+                          />
+                        </div>
+                      )}
+                      {questions.section3.map((question, index) => (
+                        <RecordingSection key={index} question={question} />
+                      ))}
+                    </div>
+                  )}
+                </div>
+                
+                <div className="score-display">
+                  <h3>ציון</h3>
+                  <p>פרק ראשון: 35 נקודות</p>
+                  <p>פרק שני: 35 נקודות</p>
+                  <p>פרק שלישי: 30 נקודות</p>
+                  <p>סה"כ: 100 נקודות</p>
+                </div>
+              </div>
             </div>
-    
-            <div className="main-content">
-              {currentSection === 1 && <div className="section">
-                  <h2>פרק ראשון - הצגה עצמית / היכרות</h2>
-                  {questions.section1.map((question, index) => <RecordingSection key={index} question={question} />)}
-                </div>}
-    
-              {currentSection === 2 && <div className="section">
-                  <h2>פרק שני - יצוג עמדה</h2>
-                  {questions.section2.map((question, index) => <RecordingSection key={index} question={question} />)}
-                </div>}
-    
-              {currentSection === 3 && <div className="section">
-                  <h2>פרק שלישי - צפייה בסרטון וענות על שאלות</h2>
-                  {videoUrl && <div className="youtube-container">
-                    <iframe width="560" height="315" src={videoUrl} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen />
-                  </div>}
-                  {questions.section3.map((question, index) => <RecordingSection key={index} question={question} />)}
-                </div>}
-            </div>
-            
-            <div className="score-display">
-              <h3>ציון</h3>
-              <p>פרק ראשון: 35 נקודות</p>
-              <p>פרק שני: 35 נקודות</p>
-              <p>פרק שלישי: 30 נקודות</p>
-              <p>סה"כ: 100 נקודות</p>
-            </div>
-          </div>
-        </div>;
+          )}
+        </div>
+      );
     };
-    ReactDOM.render(<ExamApp />, document.getElementById('root'));</script>
+    
+    ReactDOM.createRoot(document.getElementById('root')).render(<ExamApp />);
+    </script>
     
     </body></html>
