@@ -2,13 +2,14 @@
 <!DOCTYPE html><html w-tid="0"><head w-tid="1"><base href simulated-href="https://example.com" w-tid="2"/>
   <link rel="stylesheet" href="https://api.websim.ai/fonts.css?v=c5a9ba3e40ada4db54e4d2755b0b684f9266922b">
   <link rel="stylesheet" href="https://api.websim.ai/ctxmenu.css?v=c5a9ba3e40ada4db54e4d2755b0b684f9266922b">
-  <script class="websim-injected">__WEBSIM_DATA__={"locationKey":"_pc2txbf3m6o","titleKey":"_6yz2kbcvogo","id":"iBzOOibOnTVSqhEiB","url":"","hostOrigin":"https://websim.ai","features":{"context":true,"errors":true,"htmx":true,"images":false,"navigation":false},"prompt":{"type":"plaintext","text":"להחליף את הקטע בExamApp  בזה:\n{isAdmin ? (\n  \u003cAdminPanel onUpdateQuestions={setQuestions} onBack={handleAdminExit} /\u003e\n) : !started ? (\n  \u003cdiv\u003e\n    \u003cbutton className=\"admin-button\" onClick={toggleAdmin}\u003e\n      \u003ci className=\"fas fa-user-cog\" /\u003e\n      ממשק מורה\n    \u003c/button\u003e\n    {showAccessRequest ? (\n      \u003cAccessRequestScreen onAccessRequestSent={handleAccessRequestSent} /\u003e\n    ) : (\n      \u003cbutton className=\"start-button request-access-button\" onClick={() =\u003e setShowAccessRequest(true)}\u003e\n        בקש גישה למערכת\n      \u003c/button\u003e\n    )}\n  \u003c/div\u003e"}}</script>
+  <script class="websim-injected">__WEBSIM_DATA__={"locationKey":"_e9i3hxl4nzg","titleKey":"_5vwzhtbwlm","id":"vn6UNiWmkDcDKO0Z4","url":"","hostOrigin":"https://websim.ai","features":{"context":true,"errors":true,"htmx":true,"images":false,"navigation":false},"prompt":{"type":"plaintext","text":"נעדכן את בדיקת האישור ב-URL:\nconst ExamApp = () =\u003e {\n  // ... existing states ... \n  \n  React.useEffect(() =\u003e {\n    const params = new URLSearchParams(window.location.search);\n    const emailToApprove = params.get('approve');\n    \n    if (emailToApprove) {\n      const approvedEmails = JSON.parse(localStorage.getItem('approvedEmails') || '[]');\n      if (!approvedEmails.includes(emailToApprove)) {\n        // שמירת האימייל המאושר\n        localStorage.setItem('approvedEmails', JSON.stringify([...approvedEmails, emailToApprove]));\n        \n        // הודעת אישור\n        alert('בקשת הגישה אושרה בהצלחה!');\n        \n        // ניקוי ה-URL והחזרה לדף הראשי\n        window.history.replaceState({}, '', window.location.pathname);\n      }\n    }\n  }, []);\n\n  const checkApproval = (email) =\u003e {\n    const approvedEmails = JSON.parse(localStorage.getItem('approvedEmails') || '[]');\n    return approvedEmails.includes(email);\n  };\n\n  const handleLogin = (email) =\u003e {\n    if (checkApproval(email)) {\n      setIsApproved(true);\n      setUserEmail(email);\n      return true;\n    } else {\n      alert('האימייל עדיין לא אושר. אנא המתן לאישור במייל.');\n      return false;\n    }\n  };\n\n  // ... rest of the component ...\n\nנעדכן את טופס ההתחברות:\nconst LoginForm = ({ onLogin }) =\u003e {\n  const [email, setEmail] = React.useState('');\n\n  const handleSubmit = (e) =\u003e {\n    e.preventDefault();\n    onLogin(email);\n  };\n\n  return (\n    \u003cdiv className=\"login-form\"\u003e\n      \u003ch2\u003eכניסה למערכת\u003c/h2\u003e\n      \u003cform onSubmit={handleSubmit}\u003e\n        \u003cdiv className=\"form-group\"\u003e\n          \u003clabel\u003eאימייל\u003c/label\u003e\n          \u003cinput \n            type=\"email\" \n            value={email} \n            onChange={(e) =\u003e setEmail(e.target.value)}\n            required \n            placeholder=\"הכנס את האימייל שאושר\"\n          /\u003e\n        \u003c/div\u003e\n        \u003cbutton type=\"submit\" className=\"start-button\"\u003eכניסה\u003c/button\u003e\n      \u003c/form\u003e\n    \u003c/div\u003e\n  );\n};\nנעדכן את הרטורן ב-ExamApp:\n\nreturn (\n  \u003cdiv\u003e\n    {isAdmin ? (\n      \u003cAdminPanel onUpdateQuestions={setQuestions} onBack={handleAdminExit} /\u003e\n    ) : !isApproved ? (\n      showAccessRequest ? (\n        \u003cAccessRequestScreen onAccessRequestSent={handleAccessRequestSent} /\u003e\n      ) : (\n        \u003cdiv className=\"access-request-container\"\u003e\n          \u003cbutton className=\"admin-button\" onClick={toggleAdmin}\u003e\n            \u003ci className=\"fas fa-user-cog\" /\u003e\n            ממשק מורה\n          \u003c/button\u003e\n          \u003cLoginForm onLogin={handleLogin} /\u003e\n          \u003cbutton \n            className=\"request-access-button\" \n            onClick={() =\u003e setShowAccessRequest(true)}\n          \u003e\n            בקש גישה למערכת\n          \u003c/button\u003e\n        \u003c/div\u003e\n      )\n    ) : !started ? (\n      \u003cWelcomeScreen onStart={handleStart} /\u003e\n    ) : (\n      // תוכן המבחן\n    )}\n  \u003c/div\u003e\n);\n"}}</script>
   <script class="websim-injected" src="https://api.websim.ai/dist/index.js?v=c5a9ba3e40ada4db54e4d2755b0b684f9266922b"></script>
   
-  <title w-tid="3">ISpeak - עבברית מדוברת</title>
+  <title w-tid="3">ISpeak - ^2ב2ר2י4ת מערכת</title>
   <meta charset="UTF-8" w-tid="4"/>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" w-tid="5"/>
-  <style w-tid="6">
+  <meta http-equiv="Content-Language" content="he" w-tid="5"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" w-tid="6"/>
+  <style w-tid="7">
   :root {
     --primary: #2b4d7e;
     --secondary: #4CAF50;
@@ -65,6 +66,7 @@
     padding: 0.5rem;
     border: 1px solid #ddd;
     border-radius: 4px;
+    font-size: 16px; /* Prevent iOS zoom on input focus */
   }
   
   .start-button {
@@ -76,6 +78,8 @@
     cursor: pointer;
     font-size: 1.1rem;
     margin-top: 1rem;
+    background: linear-gradient(45deg, var(--primary), #1a365d);
+    box-shadow: 0 4px 15px rgba(43, 77, 126, 0.2);
   }
   
   .nav {
@@ -301,6 +305,7 @@
     min-height: 100px;
     margin: 0.5rem 0;
     padding: 0.5rem;
+    font-size: 16px;
   }
   
   .save-button {
@@ -439,6 +444,7 @@
     margin-bottom: 1rem;
     border: 1px solid #ddd;
     border-radius: 4px;
+    font-size: 16px;
   }
   
   .request-access-button {
@@ -460,6 +466,61 @@
     opacity: 0.9;
     transform: translateY(-1px);
     transition: all 0.3s ease;
+  }
+  
+  .access-request-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    gap: 2rem;
+  }
+  
+  .login-container {
+    max-width: 400px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+  
+  .login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 400px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    text-align: center;
+  }
+  
+  .login-form h3 {
+    margin-bottom: 2rem;
+  }
+  
+  .login-form {
+    text-align: right;
+  }
+  
+  .access-request-screen {
+    text-align: right;
+  }
+  
+  .form-group {
+    text-align: right;
+  }
+  
+  .form-group label {
+    text-align: right;
+  }
+  
+  .request-access-button {
+    text-align: center;
   }
   
   /* Add new mobile responsive CSS */
@@ -563,7 +624,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2); 
       z-index: 1000;
       cursor: pointer;
     }
@@ -588,91 +649,85 @@
   }
   </style>
   
-  <script src="https://unpkg.com/react@17/umd/react.development.js" crossOrigin="anonymous" w-tid="7"></script>
-  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossOrigin="anonymous" w-tid="8"></script>
-  <script src="https://unpkg.com/babel-standalone@6/babel.min.js" crossOrigin="anonymous" w-tid="9"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;700&display=swap" rel="stylesheet" w-tid="10"/>
+  <script src="https://unpkg.com/react@17/umd/react.development.js" crossOrigin="anonymous" w-tid="8"></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossOrigin="anonymous" w-tid="9"></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js" crossOrigin="anonymous" w-tid="10"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;700&display=swap" rel="stylesheet" w-tid="11"/>
   </head>
-  <body w-tid="11">
-  <div id="root" w-tid="12"></div>
+  <body w-tid="12">
+  <div id="root" w-tid="13"></div>
   
-  <script type="text/babel" w-tid="13">const WelcomeScreen = ({
+  <script type="text/babel" w-tid="14">const WelcomeScreen = ({
     onStart
   }) => {
     const [formData, setFormData] = React.useState({
       name: '',
       class: '',
-      teacher: ''
+      teacher: '',
+      email: ''
     });
     const handleSubmit = e => {
       e.preventDefault();
       onStart(formData);
     };
     return <div className="welcome-screen">
-      <h1>ISpeak -עברית מדוברת</h1>
-      <p>
-        שלום תלמיד/ה יקר/ה, כאן צוות העברית בבית ספר תיכון בית ג'ן. 
-        ברוכים הבאים לIspeak – עברית שפה דבורה.
-      </p>
-      <p>
-        לפני שנתחיל אסביר לכם מהו מבנה ערכת התרגול וּמה אתם נדרשים לעשות. המבחן כולל שלושה פרקים:
-      </p>
-      <ul>
-        <li>בפרק הראשון תתבקשו לדבר על עצמכם בזיקה לנושא מסוים</li>
-        <li>בפרק השני תציגו את עמדתכם בנושא מסוים</li>
-        <li>בַפרק השלישי תצפו בְּסרטון ותענו על שאלות</li>
-      </ul>
-      <p>
-        כדי להקליט תשובה, לַחֲצו על הכפתור "הקלטה" וּבְסיום ההקלטה לַחֲצו על הכפתור "עצור".
-        תוכלו לשמוע את ההקלטה שלכם ובמידת הצורך להקליט מחדש את כל התשובה.
-      </p>
-      <p>
-        שימו לב, יש לכם רק שני ניסיונות הקלטה לכל תשובה. ניתן להקליט עד שני מקטעים.
-        הַקפידו על תשובות מלאות ועל שפה ברורה.
-      </p>
-      <p>
-        בצידו השמאלי העליון של המסך יופיע שעון. השעון יאפשר לכם לדעת כמה זמן נשאר לכם עד סיום המבחן.
-        משך המבחן 30 דקות.
-      </p>
-      <p>בהצלחה - מאמינים בכם תמיד!</p>
-  
-      <form className="login-form" onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label>שם מלא</label>
-          <input type="text" required value={formData.name} onChange={e => setFormData({
+        <h1>ISpeak - ^2&#x5d1;2&#x5e8;2&#x5d9;4&#x5ea; &#x5de;&#x5e2;&#x5e8;&#x5db;&#x5ea;</h1>
+        <p>
+          ^2&#x15e9;&#x15d0;&#x15e9;&#x15d5;&#x15e8;&#x15d5;&#x15ea; &#x15e2;&#x15d5;&#x15e8;&#x15d5;&#x15ea;, &#x15e2;&#x15d5;&#x15e8;&#x15d5;&#x15ea; &#x15d0;&#x15d5;&#x15e8;&#x15d5;&#x15ea; &#x15e2;&#x15d5;&#x15e8;&#x15d5;&#x15ea; &#x15d0;&#x15d5;&#x15e8;&#x15d5;&#x15ea; &#x15e2;&#x15d5;&#x15e8;&#x15d5;&#x15ea; &#x15d0;&#x15d5;&#x15e8;&#x15d5;&#x15ea;.
+        </p>
+        <p>
+          &#x15e9;&#x15d0;&#x15e8;&#x15d5;&#x15e8;&#x15d5;&#x15ea; &#x15e2;&#x15d5;&#x15e8;&#x15d5;&#x15ea; &#x15d0;&#x15d5;&#x15e8;&#x15d5;&#x15ea; &#x15e2;&#x15d5;&#x15e8;&#x15d5;&#x15ea; &#x15d0;&#x15d5;&#x15e8;&#x15d5;&#x15ea; &#x15e2;&#x15d5;&#x15e8;&#x15d5;&#x15ea; &#x15d0;&#x15d5;&#x15e8;&#x15d5;&#x15ea; &#x15e2;&#x15d5;&#x15e8;&#x15d5;&#x15ea; &#x15d0;&#x15d5;&#x15e8;&#x15d5;&#x15ea;.
+        </p>
+        <p>
+          &#x15e9;&#x15d0;&#x15e8;&#x15d5;&#x15e8;&#x15d5;&#x15ea; &#x15e2;&#x15d5;&#x15e8;&#x15d5;&#x15ea; &#x15d0;&#x15d5;&#x15e8;&#x15d5;&#x15ea; &#x15e2;&#x15d5;&#x15e8;&#x15d5;&#x15ea; &#x15d0;&#x15d5;&#x15e8;&#x15d5;&#x15ea; &#x15e2;&#x15d5;&#x15e8;&#x15d5;&#x15ea; &#x15d0;&#x15d5;&#x15e8;&#x15d5;&#x15ea; &#x15e2;&#x15d5;&#x15e8;&#x15d5;&#x15ea; &#x15d0;&#x15d5;&#x15e8;&#x15d5;&#x15ea;.
+        </p>
+        <p>
+          &#x15e9;&#x15d0;&#x15e8;&#x15d5;&#x15e8;&#x15d5;&#x15ea; &#x15e2;&#x15d5;&#x15e8;&#x15d5;&#x15ea; &#x15d0;&#x15d5;&#x15e8;&#x15d5;&#x15ea; &#x15e2;&#x15d5;&#x15e8;&#x15d5;&#x15ea; &#x15d0;&#x15d5;&#x15e8;&#x15d5;&#x15ea; &#x15e2;&#x15d5;&#x15e8;&#x15d5;&#x15ea; &#x15d0;&#x15d5;&#x15e8;&#x15d5;&#x15ea; &#x15e2;&#x15d5;&#x15e8;&#x15d5;&#x15ea; &#x15d0;&#x15d5;&#x15e8;&#x15d5;&#x15ea; &#x15e2;&#x15d5;&#x15e8;&#x15d5;&#x15ea; &#x15d0;&#x15d5;&#x15e8;&#x15d5;&#x15ea;!
+        </p>
+        <form className="login-form" onSubmit={handleSubmit}>
+          <div className="form-group">
+            <label>&#x15e9;&#x15d0;&#x15e8;&#x15d5;&#x15e8;</label>
+            <input type="text" required value={formData.name} onChange={e => setFormData({
             ...formData,
             name: e.target.value
           })} />
-        </div>
-        <div className="form-group">
-          <label>כיתה</label>
-          <input type="text" required value={formData.class} onChange={e => setFormData({
+          </div>
+          <div className="form-group">
+            <label>&#x15d0;&#x15d5;&#x15e8;&#x15d5;&#x15e8;</label>
+            <input type="text" required value={formData.class} onChange={e => setFormData({
             ...formData,
             class: e.target.value
           })} />
-        </div>
-        <div className="form-group">
-          <label>מורה מלמד</label>
-          <input type="text" required value={formData.teacher} onChange={e => setFormData({
+          </div>
+          <div className="form-group">
+            <label>&#x15e9;&#x15d0;&#x15e8;&#x15d5;&#x15e8; </label>
+            <input type="text" required value={formData.teacher} onChange={e => setFormData({
             ...formData,
             teacher: e.target.value
           })} />
-        </div>
-        <button type="submit" className="start-button">התחל מבחן</button>
-      </form>
-      <button className="request-access-button" onClick={() => setShowAccessRequest(true)}>
-        בקשת גישה למערכת
-      </button>
-    </div>;
+          </div>
+          <div className="form-group">
+            <label>&#x591;&#x5d9;&#x5dd;</label>
+            <input type="email" required value={formData.email} onChange={e => setFormData({
+            ...formData,
+            email: e.target.value
+          })} />
+          </div>
+          <button type="submit" className="start-button">&#x15d0;&#x15d5;&#x15e8;&#x15d5;&#x15e8; </button>
+        </form>
+        <button className="request-access-button">
+          &#x15e9;&#x15d0;&#x15e8;&#x15d5;&#x15e8; &#x15e9;&#x15d0;&#x15e8;&#x15d5;&#x15e8;
+        </button>
+      </div>;
   };
   const AdminPanel = ({
     onUpdateQuestions,
     onBack
   }) => {
     const [questions, setQuestions] = React.useState({
-      section1: ["שאלה 1", "שאלה 2"],
-      section2: ["שאלה 3", "שאלה 4"],
-      section3: ["שאלה 5", "שאלה 6"]
+      section1: ["&#x15e9;&#x15d0;&#x15e8;&#x15d5;&#x15e8; 1", "&#x15e9;&#x15d0;&#x15e8;&#x15d5;&#x15e8; 2"],
+      section2: ["&#x15e9;&#x15d0;&#x15e8;&#x15d5;&#x15e8; 3", "&#x15e9;&#x15d0;&#x15e8;&#x15d5;&#x15e8; 4"],
+      section3: ["&#x15e9;&#x15d0;&#x15e8;&#x15d5;&#x15e8; 5", "&#x15e9;&#x15d0;&#x15e8;&#x15d5;&#x15e8; 6"]
     });
     const [videoUrl, setVideoUrl] = React.useState('');
     React.useEffect(() => {
@@ -692,7 +747,7 @@
       const newQuestions = {
         ...questions
       };
-      newQuestions[section] = [...newQuestions[section], "שאלה חדשה"];
+      newQuestions[section] = [...newQuestions[section], "&#x15e9;&#x15d0;&#x15e8;&#x15d5;&#x15e8; "];
       setQuestions(newQuestions);
     };
     const removeQuestion = (section, index) => {
@@ -705,67 +760,57 @@
     const handleSave = () => {
       let processedVideoUrl = videoUrl;
       if (videoUrl) {
-        // Updated regex to handle more YouTube URL formats
         const youtubeRegex = /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:watch\?v=|embed\/)|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
         const match = videoUrl.match(youtubeRegex);
-        
         if (match && match[1]) {
-          // Always use the embed URL format
           processedVideoUrl = `https://www.youtube.com/embed/${match[1]}`;
         } else {
-          // If URL doesn't match expected format, show error
-          alert('אנא הכנס קישור תקין של יוטיוב');
+          alert('&#x15e9;&#x15d2;&#x15d9;&#x15d0;&#x15d4;: &#x15ea;&#x15d5;&#x15e8;&#x15d5;&#x15e8; &#x15d5;&#x15d9;&#x15d3;&#x15d0;&#x15d5; &#x15d5;&#x15d9;&#x15d0; &#x15d8;&#x15d9;&#x15e7;&#x15d9;&#x15e0;.');
           return;
         }
       }
-  
       localStorage.setItem('examQuestions', JSON.stringify(questions));
       localStorage.setItem('examVideoUrl', processedVideoUrl);
       onUpdateQuestions(questions);
-      alert('השאלות והסרטון נשמרו בהצלחה!');
+      alert('&#x15d4;&#x15d5;&#x15e8;&#x15d5;&#x15ea; &#x15d4;&#x15d5;&#x15e8;&#x15d5;&#x15ea; &#x15d4;&#x15d5;&#x15e8;&#x15d5;&#x15ea; &#x15d5;&#x15d9;&#x15d2;&#x15e8;&#x15d4;!');
     };
     return <div className="admin-panel">
         <button className="sidebar-button" style={{
         marginBottom: '20px'
       }} onClick={onBack}>
           <i className="fas fa-arrow-right" />
-          חזרה לדף הבית
+          &#x15d0;&#x15d5;&#x15e8;&#x15d5;&#x15e8; &#x15e9;&#x15d0;&#x15e8;&#x15d5;&#x15e8;
         </button>
   
-        <h2>ממשק מורה - עריכת שאלות</h2>
+        <h2>&#x15de;&#x15dd;&#x15e7; &#x15de;&#x15d5;&#x15e8;&#x15d4; - &#x15e9;&#x15d0;&#x15e8;&#x15d5;&#x15e8;&#x15d5;&#x15ea;</h2>
   
         <div style={{
         marginBottom: '2rem'
       }}>
-          <h3>קישור לסרטון יוטיוב</h3>
+          <h3>&#x15ea;&#x15d9;&#x15e9;&#x15d5;&#x15e8; &#x15d5;&#x15d9;&#x15d3;&#x15d0;&#x15d5;</h3>
           <div className="form-group">
-            <input 
-              type="text" 
-              value={videoUrl} 
-              onChange={e => setVideoUrl(e.target.value)} 
-              placeholder="https://www.youtube.com/watch?v=VIDEO_ID" 
-              style={{
-              width: '100%',
-              padding: '0.5rem'
-            }} />
+            <input type="text" value={videoUrl} onChange={e => setVideoUrl(e.target.value)} placeholder="https://www.youtube.com/watch?v=VIDEO_ID" style={{
+            width: '100%',
+            padding: '0.5rem'
+          }} />
             <small style={{
-              display: 'block',
-              marginTop: '0.5rem',
-              color: '#666'
-            }}>
-              קישורים תקינים לדוגמה:
-              <br/>
+            display: 'block',
+            marginTop: '0.5rem',
+            color: '#666'
+          }}>
+              &#x15d3;&#x15d5;&#x15d2;&#x15e1;&#x15d5;&#x15ea; &#x15d5;&#x15d9;&#x15d3;&#x15d0;&#x15d5;&#x15ea; &#x15d8;&#x15d9;&#x15e7;&#x15d9;&#x15e0;:
+              <br />
               - https://www.youtube.com/watch?v=VIDEO_ID
-              <br/>
+              <br />
               - https://youtu.be/VIDEO_ID
-              <br/>
+              <br />
               - https://www.youtube.com/embed/VIDEO_ID
             </small>
           </div>
         </div>
   
         {Object.entries(questions).map(([section, sectionQuestions]) => <div key={section} className="question-editor">
-            <h3>פרק {section.replace('section', '')}</h3>
+            <h3>&#x15e7;&#x15e2;&#x15e8; {section.replace('section', '')}</h3>
             {sectionQuestions.map((question, index) => <div key={index} style={{
           display: 'flex',
           gap: '1rem',
@@ -776,89 +821,117 @@
           }} />
                 <button onClick={() => removeQuestion(section, index)} className="delete-button">
                   <i className="fas fa-trash" />
-                  מחיקת שאלה
+                  &#x15e9;&#x15d0;&#x15e8;&#x15d5;&#x15e8; &#x15e9;&#x15d0;&#x15e8;&#x15d5;&#x15e8;
                 </button>
               </div>)}
             <button onClick={() => addQuestion(section)} className="save-button" style={{
           marginTop: '1rem'
         }}>
               <i className="fas fa-plus" />
-              הוספת שאלה
+              &#x15d4;&#x15d5;&#x15e8;&#x15d5;&#x15ea; &#x15e9;&#x15d0;&#x15e8;&#x15d5;&#x15e8;
             </button>
           </div>)}
         <button className="save-button" onClick={handleSave}>
           <i className="fas fa-save" />
-          שמירת שאלות
+          &#x15d4;&#x15d5;&#x15e8;&#x15d5;&#x15ea; &#x15d4;&#x15d5;&#x15e8;&#x15d5;&#x15ea;
         </button>
       </div>;
   };
-  const AccessRequestScreen = ({ onAccessRequestSent }) => {
+  const AccessRequestScreen = ({
+    onAccessRequestSent
+  }) => {
     const [formData, setFormData] = React.useState({
       name: '',
       email: '',
       reason: ''
     });
-  
-    const handleSubmit = async (e) => {
+    const handleSubmit = async e => {
       e.preventDefault();
       try {
+        const approveUrl = `${window.location.origin}${window.location.pathname}?approve=${formData.email}`;
+        const emailContent = {
+          ...formData,
+          _subject: `בקשת הרשאה חדשה למערכת ISpeak`,
+          message: `
+            בקשת הרשאה חדשה התקבלה:
+            
+            שם: ${formData.name}
+            דואר אלקטרוני: ${formData.email}
+            סיבה: ${formData.reason}
+            
+            לאישור הבקשה לחץ על הקישור:
+            ${approveUrl}
+            
+            הודעה זו נשלחה באופן אוטומטי ממערכת ISpeak.
+          `
+        };
         const response = await fetch('https://formspree.io/f/xeooabvy', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
           },
-          body: JSON.stringify(formData)
+          body: JSON.stringify(emailContent)
         });
-        
         if (response.ok) {
-          alert('בקשת הגישה נשלחה בהצלחה');
+          alert('בקשת הרשאה חדשה נשלחה בהצלחה! אנא בדוק את הדואר האלקטרוני שלך לקבלת הודעת אישור.');
           onAccessRequestSent();
         } else {
-          throw new Error();
+          throw new Error('Failed to send request');
         }
       } catch (error) {
-        alert('שגיאה בשליחת הבקשה');
+        console.error('Error sending request:', error);
+        alert('אירעה שגיאה בשליחת הבקשה');
       }
     };
-  
-    return (
-      <div className="access-request-screen">
-        <h1>בקשת גישה למערכת</h1>
-        <p>על מנת להשתמש במערכת, אנא מלאו את הטופס הבא ואנחנו נשלח לכם אישור גישה בהקדם.</p>
+    return <div className="access-request-screen">
+        <h1>בקשת הרשאת גישה</h1>
+        <p>אנא מלא את הפרטים הבאים כדי לבקש גישה למערכת.</p>
         <form className="access-request-form" onSubmit={handleSubmit}>
           <div className="form-group">
             <label>שם מלא</label>
-            <input 
-              type="text" 
-              required 
-              value={formData.name} 
-              onChange={e => setFormData({ ...formData, name: e.target.value })} 
-            />
+            <input type="text" required value={formData.name} onChange={e => setFormData({
+            ...formData,
+            name: e.target.value
+          })} />
           </div>
           <div className="form-group">
-            <label>אימייל</label>
-            <input 
-              type="email" 
-              required 
-              value={formData.email} 
-              onChange={e => setFormData({ ...formData, email: e.target.value })} 
-            />
+            <label>דואר אלקטרוני</label>
+            <input type="email" required value={formData.email} onChange={e => setFormData({
+            ...formData,
+            email: e.target.value
+          })} />
           </div>
           <div className="form-group">
-            <label>סיבה לבקשת הגישה</label>
-            <textarea 
-              required 
-              value={formData.reason} 
-              onChange={e => setFormData({ ...formData, reason: e.target.value })} 
-              placeholder="הסבר קצר מדוע ברצונך להשתמש במערכת..."
-            ></textarea>
+            <label>סיבת הבקשה</label>
+            <textarea required value={formData.reason} onChange={e => setFormData({
+            ...formData,
+            reason: e.target.value
+          })} placeholder="אנא פרט את הסיבה לבקשת הגישה..."></textarea>
           </div>
           <button type="submit" className="start-button">
             שלח בקשה
           </button>
         </form>
-      </div>
-    );
+      </div>;
+  };
+  const LoginForm = ({
+    onLogin
+  }) => {
+    const [email, setEmail] = React.useState('');
+    const handleSubmit = e => {
+      e.preventDefault();
+      onLogin(email);
+    };
+    return <div className="login-form">
+        <h2>כניסה למערכת</h2>
+        <form onSubmit={handleSubmit}>
+          <div className="form-group">
+            <label>אימייל</label>
+            <input type="email" value={email} onChange={e => setEmail(e.target.value)} required placeholder="הכנס את האימייל שאושר" />
+          </div>
+          <button type="submit" className="start-button">כניסה</button>
+        </form>
+      </div>;
   };
   const RecordingSection = ({
     question,
@@ -911,7 +984,7 @@
     }, [segments]);
     const startRecording = async () => {
       if (segments.length >= 2) {
-        setErrorMessage('יש לך רק שני ניסיונות הקלטה לכל תשובה');
+        setErrorMessage('לא ניתן לבצע יותר משני הקלטות.');
         return;
       }
       try {
@@ -941,7 +1014,7 @@
         setErrorMessage('');
       } catch (err) {
         console.error('Error accessing microphone:', err);
-        setErrorMessage('אין גישה למיקרופון');
+        setErrorMessage('שגיאה בגישה למיקרופון.');
       }
     };
     const stopRecording = () => {
@@ -954,40 +1027,40 @@
       setErrorMessage('');
     };
     return <div className="question">
-      <p>{question}</p>
-      
-      {isRecording ? <div>
-          <div className="recording-timer">
-            זמן הקלטה: {recordingTime} שניות
-          </div>
-          <button className="record-button recording" onClick={stopRecording}>
-            <i className="fas fa-stop-circle" />
-            עצור
-          </button>
-        </div> : <button className="record-button" onClick={startRecording} disabled={segments.length >= 2}>
-          <i className={isRecording ? "fas fa-stop-circle" : "fas fa-microphone"} />
-          {isRecording ? 'עצור' : 'הקלט'}
-        </button>}
-  
-      {errorMessage && <div className="recording-error">{errorMessage}</div>}
-  
-      <div className="recording-segments">
-        {segments.map((segment, index) => <div key={segment.id} className="segment">
-            <i className="fas fa-headphones" />
-            <span>מקטע {index + 1}</span>
-            <audio className="audio-player" controls src={segment.url} />
-            <button className="delete-button" onClick={() => deleteSegment(segment.id)}>
-              <i className="fas fa-trash" />
-              מחיקה
+        <p>{question}</p>
+        
+        {isRecording ? <div>
+            <div className="recording-timer">
+              זמן הקלטה: {recordingTime} שניות
+            </div>
+            <button className="record-button recording" onClick={stopRecording}>
+              <i className="fas fa-stop-circle" />
+              עצור
             </button>
-          </div>)}
-      </div>
+          </div> : <button className="record-button" onClick={startRecording} disabled={segments.length >= 2}>
+            <i className={isRecording ? "fas fa-stop-circle" : "fas fa-microphone"} />
+            {isRecording ? 'עצור' : 'הקלט'}
+          </button>}
   
-      {segments.length > 0 && <div className="recording-player">
-          <h4>הקלטה:</h4>
-          <audio className="audio-player" controls src={combinedAudioUrl} />
-        </div>}
-    </div>;
+        {errorMessage && <div className="recording-error">{errorMessage}</div>}
+  
+        <div className="recording-segments">
+          {segments.map((segment, index) => <div key={segment.id} className="segment">
+              <i className="fas fa-headphones" />
+              <span>הקלטה {index + 1}</span>
+              <audio className="audio-player" controls src={segment.url} />
+              <button className="delete-button" onClick={() => deleteSegment(segment.id)}>
+                <i className="fas fa-trash" />
+                מחק
+              </button>
+            </div>)}
+        </div>
+  
+        {segments.length > 0 && <div className="recording-player">
+            <h4>הקלטה מאוחדת</h4>
+            <audio className="audio-player" controls src={combinedAudioUrl} />
+          </div>}
+      </div>;
   };
   const ExamApp = () => {
     const [started, setStarted] = React.useState(false);
@@ -995,6 +1068,9 @@
     const [currentSection, setCurrentSection] = React.useState(1);
     const [examTimer, setExamTimer] = React.useState(30 * 60);
     const [isAdmin, setIsAdmin] = React.useState(false);
+    const [showAccessRequest, setShowAccessRequest] = React.useState(false);
+    const [isApproved, setIsApproved] = React.useState(false);
+    const [userEmail, setUserEmail] = React.useState('');
     const [questions, setQuestions] = React.useState({
       section1: ["שאלה 1", "שאלה 2"],
       section2: ["שאלה 3", "שאלה 4"],
@@ -1003,20 +1079,60 @@
     const [videoUrl, setVideoUrl] = React.useState('');
     const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
     const [windowWidth, setWindowWidth] = React.useState(window.innerWidth);
-    const [showAccessRequest, setShowAccessRequest] = React.useState(false);
-  
     React.useEffect(() => {
-      const savedQuestions = localStorage.getItem('examQuestions');
-      if (savedQuestions) {
-        setQuestions(JSON.parse(savedQuestions));
+      const params = new URLSearchParams(window.location.search);
+      const emailToApprove = params.get('approve');
+      if (emailToApprove) {
+        const approvedEmails = JSON.parse(localStorage.getItem('approvedEmails') || '[]');
+        if (!approvedEmails.includes(emailToApprove)) {
+          localStorage.setItem('approvedEmails', JSON.stringify([...approvedEmails, emailToApprove]));
+          alert('בקשת הגישה אושרה בהצלחה!');
+          window.history.replaceState({}, '', window.location.pathname);
+        }
       }
     }, []);
-    React.useEffect(() => {
-      const savedVideoUrl = localStorage.getItem('examVideoUrl');
-      if (savedVideoUrl) {
-        setVideoUrl(savedVideoUrl);
+    const checkApproval = email => {
+      const approvedEmails = JSON.parse(localStorage.getItem('approvedEmails') || '[]');
+      return approvedEmails.includes(email);
+    };
+    const handleLogin = email => {
+      if (checkApproval(email)) {
+        setIsApproved(true);
+        setUserEmail(email);
+        return true;
+      } else {
+        alert('האימייל עדיין לא אושר. אנא המתן לאישור במייל.');
+        return false;
       }
-    }, []);
+    };
+    const handleAccessRequestSent = () => {
+      setShowAccessRequest(false);
+      alert('בקשת הרשאה חדשה נשלחה בהצלחה! אנא בדוק את הדואר האלקטרוני שלך לקבלת הודעת אישור.');
+    };
+    const handleStart = formData => {
+      if (isApproved) {
+        setStudentInfo(formData);
+        setStarted(true);
+      } else {
+        alert('הדואר האלקטרוני שלך עדיין לא אושר או שלא נמצא במערכת');
+      }
+    };
+    const handleAdminExit = () => {
+      setIsAdmin(false);
+    };
+    const toggleAdmin = () => {
+      setIsAdmin(true);
+    };
+    const formatTime = seconds => {
+      const mins = Math.floor(seconds / 60);
+      const secs = seconds % 60;
+      return `${mins}:${secs.toString().padStart(2, '0')}`;
+    };
+    const goToHome = () => {
+      setStarted(false);
+      setStudentInfo(null);
+      setCurrentSection(1);
+    };
     React.useEffect(() => {
       if (started) {
         const timer = setInterval(() => {
@@ -1035,162 +1151,108 @@
       const handleResize = () => {
         setWindowWidth(window.innerWidth);
       };
-      
       window.addEventListener('resize', handleResize);
-      
       return () => {
         window.removeEventListener('resize', handleResize);
       };
     }, []);
-  
-    const formatTime = seconds => {
-      const mins = Math.floor(seconds / 60);
-      const secs = seconds % 60;
-      return `${mins}:${secs.toString().padStart(2, '0')}`;
-    };
-    const handleStart = formData => {
-      setStudentInfo(formData);
-      setStarted(true);
-    };
-    const goToHome = () => {
-      setStarted(false);
-      setStudentInfo(null);
-      setCurrentSection(1);
-    };
-    const toggleAdmin = () => {
-      setIsAdmin(true);
-    };
-    const handleAdminExit = () => {
-      setIsAdmin(false);
-    };
-    const handleAccessRequestSent = () => {
-      setShowAccessRequest(false);
-    };
-  
     const renderSidebar = () => <div className="sidebar">
         <h2>תפריט</h2>
         <div className="sidebar-nav">
           <button className="sidebar-button" onClick={goToHome}>
             <i className="fas fa-home" />
-            חזרה לדף הבית
+            דף הבית
           </button>
           {started && [1, 2, 3].map(section => <button key={section} className={`sidebar-button ${currentSection === section ? 'active' : ''}`} onClick={() => setCurrentSection(section)}>
-              <i className="fas fa-book-open" />
-              פרק {section}
-            </button>)}
+                <i className="fas fa-book-open" />
+                חלק {section}
+              </button>)}
         </div>
       </div>;
-    
-    return (
-      <div>
-        {isAdmin ? (
-          <AdminPanel onUpdateQuestions={setQuestions} onBack={handleAdminExit} />
-        ) : showAccessRequest ? (
-          <AccessRequestScreen onAccessRequestSent={handleAccessRequestSent} />
-        ) : !started ? (
-          <div>
-            <button className="admin-button" onClick={toggleAdmin}>
-              <i className="fas fa-user-cog" />
-              ממשק מורה
-            </button>
-            <WelcomeScreen onStart={handleStart} />
-            <button className="request-access-button" onClick={() => setShowAccessRequest(true)}>
-              בקשת גישה למערכת
-            </button>
-          </div>
-        ) : (
-          <div>
-            {windowWidth <= 768 && (
-              <React.Fragment>
-                <button 
-                  className="mobile-menu-button" 
-                  onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                >
+    return <div>
+        {isAdmin ? <AdminPanel onUpdateQuestions={setQuestions} onBack={handleAdminExit} /> : !isApproved ? showAccessRequest ? <AccessRequestScreen onAccessRequestSent={handleAccessRequestSent} /> : <div className="access-request-container">
+              <button className="admin-button" onClick={toggleAdmin}>
+                <i className="fas fa-user-cog" />
+                ממשק מורה
+              </button>
+              <LoginForm onLogin={handleLogin} />
+              <button className="request-access-button" onClick={() => setShowAccessRequest(true)}>
+                בקש גישה למערכת
+              </button>
+            </div> : !started ? <WelcomeScreen onStart={handleStart} /> : <div>
+            {windowWidth <= 768 && <React.Fragment>
+                <button className="mobile-menu-button" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
                   <i className="fas fa-bars" />
                 </button>
-                
-                {mobileMenuOpen && (
-                  <div className="mobile-nav">
+  
+                {mobileMenuOpen && <div className="mobile-nav">
                     <button className="sidebar-button" onClick={goToHome}>
                       <i className="fas fa-home" />
-                      חזרה לדף הבית
+                      דף הבית
                     </button>
-                    {started && [1, 2, 3].map(section => (
-                      <button 
-                        key={section} 
-                        className={`sidebar-button ${currentSection === section ? 'active' : ''}`}
-                        onClick={() => {
-                          setCurrentSection(section);
-                          setMobileMenuOpen(false);
-                        }}
-                      >
-                        <i className="fas fa-book-open" />
-                        פרק {section}
-                      </button>
-                    ))}
-                  </div>
-                )}
-              </React.Fragment>
-            )}
+                    {started && [1, 2, 3].map(section => <button key={section} className={`sidebar-button ${currentSection === section ? 'active' : ''}`} onClick={() => {
+              setCurrentSection(section);
+              setMobileMenuOpen(false);
+            }}>
+                          <i className="fas fa-book-open" />
+                          חלק {section}
+                        </button>)}
+                  </div>}
+              </React.Fragment>}
+  
             {renderSidebar()}
             <div className="exam-timer">
               <i className="fas fa-clock" />
               זמן נותר: {formatTime(examTimer)}
             </div>
+  
             <div className="container">
               <nav className="nav">
-                <h1>בחינה בעל פה - עברית</h1>
+                <h1>ISpeak</h1>
                 <div>
                   {studentInfo ? `${studentInfo.name} | כיתה ${studentInfo.class}` : ''}
                 </div>
               </nav>
   
               <div className="section-nav">
-                {[1, 2, 3].map(section => (
-                  <button 
-                    key={section} 
-                    className={`section-button ${currentSection === section ? 'active' : ''}`} 
-                    onClick={() => setCurrentSection(section)}
-                  >
+                {[1, 2, 3].map(section => <button key={section} className={`section-button ${currentSection === section ? 'active' : ''}`} onClick={() => setCurrentSection(section)}>
                     <i className="fas fa-book" />
-                    פרק {section}
-                  </button>
-                ))}
+                    חלק {section}
+                  </button>)}
               </div>
   
               <div className="main-content">
                 {currentSection === 1 && <div className="section">
-                    <h2>פרק ראשון - הצגה עצמית / היכרות</h2>
+                    <h2>חלק ראשון - קריאה / כתיבה</h2>
                     {questions.section1.map((question, index) => <RecordingSection key={index} question={question} />)}
                   </div>}
   
                 {currentSection === 2 && <div className="section">
-                    <h2>פרק שני - יצוג עמדה</h2>
+                    <h2>חלק שני - דיבור</h2>
                     {questions.section2.map((question, index) => <RecordingSection key={index} question={question} />)}
                   </div>}
   
                 {currentSection === 3 && <div className="section">
-                    <h2>פרק שלישי - צפייה בסרטון וענות על שאלות</h2>
+                    <h2>חלק שלישי - שמיעה והבנה</h2>
                     {videoUrl && <div className="youtube-container">
-                      <iframe width="560" height="315" src={videoUrl} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen />
-                    </div>}
+                        <iframe width="560" height="315" src={videoUrl} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen />
+                      </div>}
                     {questions.section3.map((question, index) => <RecordingSection key={index} question={question} />)}
                   </div>}
               </div>
-              
+  
               <div className="score-display">
-                <h3>ציון</h3>
-                <p>פרק ראשון: 35 נקודות</p>
-                <p>פרק שני: 35 נקודות</p>
-                <p>פרק שלישי: 30 נקודות</p>
+                <h3>ציונים</h3>
+                <p>חלק ראשון: 35 נקודות</p>
+                <p>חלק שני: 35 נקודות</p>
+                <p>חלק שלישי: 30 נקודות</p>
                 <p>סה"כ: 100 נקודות</p>
               </div>
             </div>
-          </div>
-        )}
-      </div>
-    );
+          </div>}
+      </div>;
   };
   ReactDOM.render(<ExamApp />, document.getElementById('root'));</script>
   
-  </body></html>
+  </body>
+  </html>
