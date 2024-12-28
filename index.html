@@ -2,7 +2,7 @@
 <!DOCTYPE html><html w-tid="0"><head w-tid="1"><base href simulated-href="https://example.com" w-tid="2"/>
   <link rel="stylesheet" href="https://api.websim.ai/fonts.css?v=c5a9ba3e40ada4db54e4d2755b0b684f9266922b">
   <link rel="stylesheet" href="https://api.websim.ai/ctxmenu.css?v=c5a9ba3e40ada4db54e4d2755b0b684f9266922b">
-  <script class="websim-injected">__WEBSIM_DATA__={"locationKey":"_e9i3hxl4nzg","titleKey":"_5vwzhtbwlm","id":"vn6UNiWmkDcDKO0Z4","url":"","hostOrigin":"https://websim.ai","features":{"context":true,"errors":true,"htmx":true,"images":false,"navigation":false},"prompt":{"type":"plaintext","text":"נעדכן את בדיקת האישור ב-URL:\nconst ExamApp = () =\u003e {\n  // ... existing states ... \n  \n  React.useEffect(() =\u003e {\n    const params = new URLSearchParams(window.location.search);\n    const emailToApprove = params.get('approve');\n    \n    if (emailToApprove) {\n      const approvedEmails = JSON.parse(localStorage.getItem('approvedEmails') || '[]');\n      if (!approvedEmails.includes(emailToApprove)) {\n        // שמירת האימייל המאושר\n        localStorage.setItem('approvedEmails', JSON.stringify([...approvedEmails, emailToApprove]));\n        \n        // הודעת אישור\n        alert('בקשת הגישה אושרה בהצלחה!');\n        \n        // ניקוי ה-URL והחזרה לדף הראשי\n        window.history.replaceState({}, '', window.location.pathname);\n      }\n    }\n  }, []);\n\n  const checkApproval = (email) =\u003e {\n    const approvedEmails = JSON.parse(localStorage.getItem('approvedEmails') || '[]');\n    return approvedEmails.includes(email);\n  };\n\n  const handleLogin = (email) =\u003e {\n    if (checkApproval(email)) {\n      setIsApproved(true);\n      setUserEmail(email);\n      return true;\n    } else {\n      alert('האימייל עדיין לא אושר. אנא המתן לאישור במייל.');\n      return false;\n    }\n  };\n\n  // ... rest of the component ...\n\nנעדכן את טופס ההתחברות:\nconst LoginForm = ({ onLogin }) =\u003e {\n  const [email, setEmail] = React.useState('');\n\n  const handleSubmit = (e) =\u003e {\n    e.preventDefault();\n    onLogin(email);\n  };\n\n  return (\n    \u003cdiv className=\"login-form\"\u003e\n      \u003ch2\u003eכניסה למערכת\u003c/h2\u003e\n      \u003cform onSubmit={handleSubmit}\u003e\n        \u003cdiv className=\"form-group\"\u003e\n          \u003clabel\u003eאימייל\u003c/label\u003e\n          \u003cinput \n            type=\"email\" \n            value={email} \n            onChange={(e) =\u003e setEmail(e.target.value)}\n            required \n            placeholder=\"הכנס את האימייל שאושר\"\n          /\u003e\n        \u003c/div\u003e\n        \u003cbutton type=\"submit\" className=\"start-button\"\u003eכניסה\u003c/button\u003e\n      \u003c/form\u003e\n    \u003c/div\u003e\n  );\n};\nנעדכן את הרטורן ב-ExamApp:\n\nreturn (\n  \u003cdiv\u003e\n    {isAdmin ? (\n      \u003cAdminPanel onUpdateQuestions={setQuestions} onBack={handleAdminExit} /\u003e\n    ) : !isApproved ? (\n      showAccessRequest ? (\n        \u003cAccessRequestScreen onAccessRequestSent={handleAccessRequestSent} /\u003e\n      ) : (\n        \u003cdiv className=\"access-request-container\"\u003e\n          \u003cbutton className=\"admin-button\" onClick={toggleAdmin}\u003e\n            \u003ci className=\"fas fa-user-cog\" /\u003e\n            ממשק מורה\n          \u003c/button\u003e\n          \u003cLoginForm onLogin={handleLogin} /\u003e\n          \u003cbutton \n            className=\"request-access-button\" \n            onClick={() =\u003e setShowAccessRequest(true)}\n          \u003e\n            בקש גישה למערכת\n          \u003c/button\u003e\n        \u003c/div\u003e\n      )\n    ) : !started ? (\n      \u003cWelcomeScreen onStart={handleStart} /\u003e\n    ) : (\n      // תוכן המבחן\n    )}\n  \u003c/div\u003e\n);\n"}}</script>
+  <script class="websim-injected">__WEBSIM_DATA__={"locationKey":"_dcjs5v9hv3v","titleKey":"_5alo6hlfjqt","id":"S13P1GYiUaNPoB4nJ","url":"","hostOrigin":"https://websim.ai","features":{"context":true,"errors":true,"htmx":true,"images":false,"navigation":false},"prompt":{"type":"plaintext","text":"כתוב לי את הקוד:\nconst AccessRequestScreen = ({ onAccessRequestSent }) =\u003e {\n  return (\n    \u003cdiv className=\"access-request-screen\"\u003e\n      \u003ch1\u003eבקשת גישה למערכת\u003c/h1\u003e\n      \u003cp\u003eעל מנת להשתמש במערכת, אנא מלאו את הטופס הבא:\u003c/p\u003e\n      \u003cdiv className=\"google-form-container\"\u003e\n        \u003ciframe \n          src=\"https://docs.google.com/forms/d/e/1FAIpQLSezxd5AJFxgcLQ2En6jHfNbP5JsAvWZBUBM4HC77EewdlgAGw/viewform?embedded=true\" \n          width=\"100%\" \n          height=\"800px\" \n          frameBorder=\"0\" \n          marginHeight=\"0\" \n          marginWidth=\"0\"\n        \u003e\n          בטעינה...\n        \u003c/iframe\u003e\n      \u003c/div\u003e\n      \u003cbutton \n        onClick={onAccessRequestSent} \n        className=\"return-button\"\n        style={{ marginTop: '20px' }}\n      \u003e\n        חזור לדף הבית\n      \u003c/button\u003e\n    \u003c/div\u003e\n  );\n};\n\nואת הקוד הזה:\n.google-form-container {\n  width: 100%;\n  max-width: 800px;\n  margin: 0 auto;\n  background: white;\n  padding: 20px;\n  border-radius: 8px;\n  box-shadow: 0 2px 4px rgba(0,0,0,0.1);\n}\n\n.return-button {\n  background: var(--primary);\n  color: white;\n  border: none;\n  padding: 0.8rem 1.5rem;\n  border-radius: 4px;\n  cursor: pointer;\n  margin-top: 1rem;\n}"}}</script>
   <script class="websim-injected" src="https://api.websim.ai/dist/index.js?v=c5a9ba3e40ada4db54e4d2755b0b684f9266922b"></script>
   
   <title w-tid="3">ISpeak - ^2ב2ר2י4ת מערכת</title>
@@ -523,6 +523,26 @@
     text-align: center;
   }
   
+  .google-form-container {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+  
+  .return-button {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 1rem;
+  }
+  
   /* Add new mobile responsive CSS */
   @media screen and (max-width: 768px) {
     .container {
@@ -840,78 +860,19 @@
   const AccessRequestScreen = ({
     onAccessRequestSent
   }) => {
-    const [formData, setFormData] = React.useState({
-      name: '',
-      email: '',
-      reason: ''
-    });
-    const handleSubmit = async e => {
-      e.preventDefault();
-      try {
-        const approveUrl = `${window.location.origin}${window.location.pathname}?approve=${formData.email}`;
-        const emailContent = {
-          ...formData,
-          _subject: `בקשת הרשאה חדשה למערכת ISpeak`,
-          message: `
-            בקשת הרשאה חדשה התקבלה:
-            
-            שם: ${formData.name}
-            דואר אלקטרוני: ${formData.email}
-            סיבה: ${formData.reason}
-            
-            לאישור הבקשה לחץ על הקישור:
-            ${approveUrl}
-            
-            הודעה זו נשלחה באופן אוטומטי ממערכת ISpeak.
-          `
-        };
-        const response = await fetch('https://formspree.io/f/xeooabvy', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(emailContent)
-        });
-        if (response.ok) {
-          alert('בקשת הרשאה חדשה נשלחה בהצלחה! אנא בדוק את הדואר האלקטרוני שלך לקבלת הודעת אישור.');
-          onAccessRequestSent();
-        } else {
-          throw new Error('Failed to send request');
-        }
-      } catch (error) {
-        console.error('Error sending request:', error);
-        alert('אירעה שגיאה בשליחת הבקשה');
-      }
-    };
     return <div className="access-request-screen">
-        <h1>בקשת הרשאת גישה</h1>
-        <p>אנא מלא את הפרטים הבאים כדי לבקש גישה למערכת.</p>
-        <form className="access-request-form" onSubmit={handleSubmit}>
-          <div className="form-group">
-            <label>שם מלא</label>
-            <input type="text" required value={formData.name} onChange={e => setFormData({
-            ...formData,
-            name: e.target.value
-          })} />
-          </div>
-          <div className="form-group">
-            <label>דואר אלקטרוני</label>
-            <input type="email" required value={formData.email} onChange={e => setFormData({
-            ...formData,
-            email: e.target.value
-          })} />
-          </div>
-          <div className="form-group">
-            <label>סיבת הבקשה</label>
-            <textarea required value={formData.reason} onChange={e => setFormData({
-            ...formData,
-            reason: e.target.value
-          })} placeholder="אנא פרט את הסיבה לבקשת הגישה..."></textarea>
-          </div>
-          <button type="submit" className="start-button">
-            שלח בקשה
-          </button>
-        </form>
+        <h1>בקשת גישה למערכת</h1>
+        <p>על מנת להשתמש במערכת, אנא מלאו את הטופס הבא:</p>
+        <div className="google-form-container">
+          <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSezxd5AJFxgcLQ2En6jHfNbP5JsAvWZBUBM4HC77EewdlgAGw/viewform?embedded=true" width="100%" height="800px" frameBorder="0" marginHeight="0" marginWidth="0">
+            בטעינה...
+          </iframe>
+        </div>
+        <button onClick={onAccessRequestSent} className="return-button" style={{
+        marginTop: '20px'
+      }}>
+          חזור לדף הבית
+        </button>
       </div>;
   };
   const LoginForm = ({
@@ -927,7 +888,7 @@
         <form onSubmit={handleSubmit}>
           <div className="form-group">
             <label>אימייל</label>
-            <input type="email" value={email} onChange={e => setEmail(e.target.value)} required placeholder="הכנס את האימייל שאושר" />
+            <input type="email" value={email} onChange={e => setEmail(e.target.value)} placeholder="הכנס את האימייל שאושר" required />
           </div>
           <button type="submit" className="start-button">כניסה</button>
         </form>
@@ -1068,9 +1029,9 @@
     const [currentSection, setCurrentSection] = React.useState(1);
     const [examTimer, setExamTimer] = React.useState(30 * 60);
     const [isAdmin, setIsAdmin] = React.useState(false);
+    const [showLogin, setShowLogin] = React.useState(true);
     const [showAccessRequest, setShowAccessRequest] = React.useState(false);
     const [isApproved, setIsApproved] = React.useState(false);
-    const [userEmail, setUserEmail] = React.useState('');
     const [questions, setQuestions] = React.useState({
       section1: ["שאלה 1", "שאלה 2"],
       section2: ["שאלה 3", "שאלה 4"],
@@ -1085,37 +1046,32 @@
       if (emailToApprove) {
         const approvedEmails = JSON.parse(localStorage.getItem('approvedEmails') || '[]');
         if (!approvedEmails.includes(emailToApprove)) {
-          localStorage.setItem('approvedEmails', JSON.stringify([...approvedEmails, emailToApprove]));
-          alert('בקשת הגישה אושרה בהצלחה!');
-          window.history.replaceState({}, '', window.location.pathname);
+          const newApprovedEmails = [...approvedEmails, emailToApprove];
+          localStorage.setItem('approvedEmails', JSON.stringify(newApprovedEmails));
+          alert('בקשת הגישה אושרה בהצלחה! המשתמש יכול כעת להיכנס למערכת');
         }
+        window.history.replaceState({}, '', window.location.pathname);
       }
     }, []);
-    const checkApproval = email => {
-      const approvedEmails = JSON.parse(localStorage.getItem('approvedEmails') || '[]');
-      return approvedEmails.includes(email);
-    };
     const handleLogin = email => {
-      if (checkApproval(email)) {
+      const approvedEmails = JSON.parse(localStorage.getItem('approvedEmails') || '[]');
+      if (approvedEmails.includes(email)) {
         setIsApproved(true);
-        setUserEmail(email);
+        setShowLogin(false);
+        localStorage.setItem('currentUserEmail', email);
         return true;
       } else {
-        alert('האימייל עדיין לא אושר. אנא המתן לאישור במייל.');
+        alert('האימייל שהוזן עדיין לא אושר. אנא המתן לאישור במייל.');
         return false;
       }
     };
     const handleAccessRequestSent = () => {
       setShowAccessRequest(false);
-      alert('בקשת הרשאה חדשה נשלחה בהצלחה! אנא בדוק את הדואר האלקטרוני שלך לקבלת הודעת אישור.');
+      setShowLogin(true);
     };
     const handleStart = formData => {
-      if (isApproved) {
-        setStudentInfo(formData);
-        setStarted(true);
-      } else {
-        alert('הדואר האלקטרוני שלך עדיין לא אושר או שלא נמצא במערכת');
-      }
+      setStudentInfo(formData);
+      setStarted(true);
     };
     const handleAdminExit = () => {
       setIsAdmin(false);
@@ -1123,132 +1079,30 @@
     const toggleAdmin = () => {
       setIsAdmin(true);
     };
-    const formatTime = seconds => {
-      const mins = Math.floor(seconds / 60);
-      const secs = seconds % 60;
-      return `${mins}:${secs.toString().padStart(2, '0')}`;
-    };
-    const goToHome = () => {
-      setStarted(false);
-      setStudentInfo(null);
-      setCurrentSection(1);
-    };
-    React.useEffect(() => {
-      if (started) {
-        const timer = setInterval(() => {
-          setExamTimer(prev => {
-            if (prev <= 0) {
-              clearInterval(timer);
-              return 0;
-            }
-            return prev - 1;
-          });
-        }, 1000);
-        return () => clearInterval(timer);
-      }
-    }, [started]);
-    React.useEffect(() => {
-      const handleResize = () => {
-        setWindowWidth(window.innerWidth);
-      };
-      window.addEventListener('resize', handleResize);
-      return () => {
-        window.removeEventListener('resize', handleResize);
-      };
-    }, []);
-    const renderSidebar = () => <div className="sidebar">
-        <h2>תפריט</h2>
-        <div className="sidebar-nav">
-          <button className="sidebar-button" onClick={goToHome}>
-            <i className="fas fa-home" />
-            דף הבית
-          </button>
-          {started && [1, 2, 3].map(section => <button key={section} className={`sidebar-button ${currentSection === section ? 'active' : ''}`} onClick={() => setCurrentSection(section)}>
-                <i className="fas fa-book-open" />
-                חלק {section}
-              </button>)}
-        </div>
-      </div>;
     return <div>
-        {isAdmin ? <AdminPanel onUpdateQuestions={setQuestions} onBack={handleAdminExit} /> : !isApproved ? showAccessRequest ? <AccessRequestScreen onAccessRequestSent={handleAccessRequestSent} /> : <div className="access-request-container">
-              <button className="admin-button" onClick={toggleAdmin}>
-                <i className="fas fa-user-cog" />
-                ממשק מורה
-              </button>
-              <LoginForm onLogin={handleLogin} />
-              <button className="request-access-button" onClick={() => setShowAccessRequest(true)}>
-                בקש גישה למערכת
-              </button>
-            </div> : !started ? <WelcomeScreen onStart={handleStart} /> : <div>
+        {isAdmin ? <AdminPanel onUpdateQuestions={setQuestions} onBack={handleAdminExit} /> : !isApproved ? <div className="access-request-container">
+            <button className="admin-button" onClick={toggleAdmin}>
+              <i className="fas fa-user-cog" />
+              ממשק מורה
+            </button>
+            
+            {showAccessRequest ? <AccessRequestScreen onAccessRequestSent={handleAccessRequestSent} /> : <div>
+                <LoginForm onLogin={handleLogin} />
+                <button className="request-access-button" onClick={() => setShowAccessRequest(true)}>
+                  בקש גישה למערכת
+                </button>
+              </div>}
+          </div> : !started ? <WelcomeScreen onStart={handleStart} /> : <div>
             {windowWidth <= 768 && <React.Fragment>
                 <button className="mobile-menu-button" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
                   <i className="fas fa-bars" />
                 </button>
   
                 {mobileMenuOpen && <div className="mobile-nav">
-                    <button className="sidebar-button" onClick={goToHome}>
-                      <i className="fas fa-home" />
-                      דף הבית
-                    </button>
-                    {started && [1, 2, 3].map(section => <button key={section} className={`sidebar-button ${currentSection === section ? 'active' : ''}`} onClick={() => {
-              setCurrentSection(section);
-              setMobileMenuOpen(false);
-            }}>
-                          <i className="fas fa-book-open" />
-                          חלק {section}
-                        </button>)}
+                    {}
                   </div>}
               </React.Fragment>}
-  
-            {renderSidebar()}
-            <div className="exam-timer">
-              <i className="fas fa-clock" />
-              זמן נותר: {formatTime(examTimer)}
-            </div>
-  
-            <div className="container">
-              <nav className="nav">
-                <h1>ISpeak</h1>
-                <div>
-                  {studentInfo ? `${studentInfo.name} | כיתה ${studentInfo.class}` : ''}
-                </div>
-              </nav>
-  
-              <div className="section-nav">
-                {[1, 2, 3].map(section => <button key={section} className={`section-button ${currentSection === section ? 'active' : ''}`} onClick={() => setCurrentSection(section)}>
-                    <i className="fas fa-book" />
-                    חלק {section}
-                  </button>)}
-              </div>
-  
-              <div className="main-content">
-                {currentSection === 1 && <div className="section">
-                    <h2>חלק ראשון - קריאה / כתיבה</h2>
-                    {questions.section1.map((question, index) => <RecordingSection key={index} question={question} />)}
-                  </div>}
-  
-                {currentSection === 2 && <div className="section">
-                    <h2>חלק שני - דיבור</h2>
-                    {questions.section2.map((question, index) => <RecordingSection key={index} question={question} />)}
-                  </div>}
-  
-                {currentSection === 3 && <div className="section">
-                    <h2>חלק שלישי - שמיעה והבנה</h2>
-                    {videoUrl && <div className="youtube-container">
-                        <iframe width="560" height="315" src={videoUrl} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen />
-                      </div>}
-                    {questions.section3.map((question, index) => <RecordingSection key={index} question={question} />)}
-                  </div>}
-              </div>
-  
-              <div className="score-display">
-                <h3>ציונים</h3>
-                <p>חלק ראשון: 35 נקודות</p>
-                <p>חלק שני: 35 נקודות</p>
-                <p>חלק שלישי: 30 נקודות</p>
-                <p>סה"כ: 100 נקודות</p>
-              </div>
-            </div>
+            {}
           </div>}
       </div>;
   };
