@@ -1,15 +1,17 @@
 
 <!DOCTYPE html><html w-tid="0"><head w-tid="1"><base href simulated-href="https://example.com" w-tid="2"/>
-  <link rel="stylesheet" href="https://api.websim.ai/fonts.css?v=c5a9ba3e40ada4db54e4d2755b0b684f9266922b">
-  <link rel="stylesheet" href="https://api.websim.ai/ctxmenu.css?v=c5a9ba3e40ada4db54e4d2755b0b684f9266922b">
-  <script class="websim-injected">__WEBSIM_DATA__={"locationKey":"_dcjs5v9hv3v","titleKey":"_5alo6hlfjqt","id":"S13P1GYiUaNPoB4nJ","url":"","hostOrigin":"https://websim.ai","features":{"context":true,"errors":true,"htmx":true,"images":false,"navigation":false},"prompt":{"type":"plaintext","text":"כתוב לי את הקוד:\nconst AccessRequestScreen = ({ onAccessRequestSent }) =\u003e {\n  return (\n    \u003cdiv className=\"access-request-screen\"\u003e\n      \u003ch1\u003eבקשת גישה למערכת\u003c/h1\u003e\n      \u003cp\u003eעל מנת להשתמש במערכת, אנא מלאו את הטופס הבא:\u003c/p\u003e\n      \u003cdiv className=\"google-form-container\"\u003e\n        \u003ciframe \n          src=\"https://docs.google.com/forms/d/e/1FAIpQLSezxd5AJFxgcLQ2En6jHfNbP5JsAvWZBUBM4HC77EewdlgAGw/viewform?embedded=true\" \n          width=\"100%\" \n          height=\"800px\" \n          frameBorder=\"0\" \n          marginHeight=\"0\" \n          marginWidth=\"0\"\n        \u003e\n          בטעינה...\n        \u003c/iframe\u003e\n      \u003c/div\u003e\n      \u003cbutton \n        onClick={onAccessRequestSent} \n        className=\"return-button\"\n        style={{ marginTop: '20px' }}\n      \u003e\n        חזור לדף הבית\n      \u003c/button\u003e\n    \u003c/div\u003e\n  );\n};\n\nואת הקוד הזה:\n.google-form-container {\n  width: 100%;\n  max-width: 800px;\n  margin: 0 auto;\n  background: white;\n  padding: 20px;\n  border-radius: 8px;\n  box-shadow: 0 2px 4px rgba(0,0,0,0.1);\n}\n\n.return-button {\n  background: var(--primary);\n  color: white;\n  border: none;\n  padding: 0.8rem 1.5rem;\n  border-radius: 4px;\n  cursor: pointer;\n  margin-top: 1rem;\n}"}}</script>
-  <script class="websim-injected" src="https://api.websim.ai/dist/index.js?v=c5a9ba3e40ada4db54e4d2755b0b684f9266922b"></script>
+  <link rel="stylesheet" href="https://api.websim.ai/fonts.css?v=895643ecd8dc4e1e4a9ebcc26efc6dac95bd8ddb">
+  <link rel="stylesheet" href="https://api.websim.ai/ctxmenu.css?v=895643ecd8dc4e1e4a9ebcc26efc6dac95bd8ddb">
+  <script class="websim-injected">__WEBSIM_DATA__={"locationKey":"_etialh0b56l","titleKey":"_c1lo0rg0z89","id":"GsOmVyHhCkpcFa3ZO","url":"","hostOrigin":"https://websim.ai","features":{"context":true,"errors":true,"htmx":true,"images":false,"navigation":false},"prompt":{"type":"plaintext","text":"function doGet(e) {\n  var action = e.parameter.action;\n  var id = e.parameter.id;\n  var email = decodeURIComponent(e.parameter.email || '');\n\n  if (!action || !id || !email) {\n    return ContentService.createTextOutput(\"חסרים פרמטרים\").setMimeType(ContentService.MimeType.TEXT);\n  }\n\n  var userData = PropertiesService.getScriptProperties().getProperty(id);\n  if (!userData) {\n    return ContentService.createTextOutput(\"בקשה לא נמצאה\").setMimeType(ContentService.MimeType.TEXT);\n  }\n\n  userData = JSON.parse(userData);\n\n  if (action === \"approve\") {\n    MailApp.sendEmail({\n      to: email,\n      subject: \"אישור גישה למערכת ISpeak\",\n      htmlBody: `\n        \u003cdiv dir=\"rtl\"\u003e\n          \u003ch2\u003eבקשתך אושרה!\u003c/h2\u003e\n          \u003cp\u003eשלום ${userData.name},\u003c/p\u003e\n          \u003cp\u003eבקשתך לגישה למערכת ISpeak אושרה.\u003c/p\u003e\n          \u003cp\u003e\u003ca href=\"https://wewe1988.github.io/ispeak-hebrew/\"\u003eכניסה למערכת\u003c/a\u003e\u003c/p\u003e\n        \u003c/div\u003e\n      `\n    });\n    return ContentService.createTextOutput(\"הגישה אושרה\").setMimeType(ContentService.MimeType.TEXT);\n  }\n\n  if (action === \"deny\") {\n    MailApp.sendEmail({\n      to: email,\n      subject: \"דחיית בקשת גישה למערכת ISpeak\",\n      htmlBody: `\n        \u003cdiv dir=\"rtl\"\u003e\n          \u003ch2\u003eבקשתך נדחתה\u003c/h2\u003e\n          \u003cp\u003eשלום ${userData.name},\u003c/p\u003e\n          \u003cp\u003eלצערנו, בקשתך לגישה למערכת ISpeak נדחתה.\u003c/p\u003e\n        \u003c/div\u003e\n      `\n    });\n    return ContentService.createTextOutput(\"הבקשה נדחתה\").setMimeType(ContentService.MimeType.TEXT);\n  }\n}"}}</script>
+  <script class="websim-injected" src="https://api.websim.ai/dist/index.js?v=895643ecd8dc4e1e4a9ebcc26efc6dac95bd8ddb"></script>
   
   <title w-tid="3">ISpeak - ^2ב2ר2י4ת מערכת</title>
   <meta charset="UTF-8" w-tid="4"/>
-  <meta http-equiv="Content-Language" content="he" w-tid="5"/>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" w-tid="6"/>
-  <style w-tid="7">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" w-tid="5"/>
+  <meta http-equiv="Content-Language" content="he" w-tid="6"/>
+  <meta name="google-site-verification" content="YOUR-VERIFICATION-CODE" w-tid="7"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" w-tid="8"/>
+  <style w-tid="9">
   :root {
     --primary: #2b4d7e;
     --secondary: #4CAF50;
@@ -430,51 +432,22 @@
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     margin-bottom: 2rem;
     text-align: center;
-  }
-  
-  .access-request-form {
     max-width: 500px;
     margin: 2rem auto;
   }
   
-  .access-request-form textarea {
-    width: 100%;
-    min-height: 100px;
-    padding: 0.5rem;
-    margin-bottom: 1rem;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 16px;
+  .access-request-screen p {
+    margin: 1rem 0;
   }
   
-  .request-access-button {
-    margin: 2rem auto;
-    display: block;
-    padding: 1rem 2rem;
-    background: var(--primary);
-    color: white;
-    border: none;
-    border-radius: 25px;
-    cursor: pointer;
-    font-size: 1.1rem;
-    margin-top: 1rem;
-    background: linear-gradient(45deg, var(--primary), #1a365d);
-    box-shadow: 0 4px 15px rgba(43, 77, 126, 0.2);
+  .access-request-screen a {
+    color: var(--primary);
+    text-decoration: none;
+    margin-right: 0.5rem;
   }
   
-  .request-access-button:hover {
-    opacity: 0.9;
-    transform: translateY(-1px);
-    transition: all 0.3s ease;
-  }
-  
-  .access-request-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    gap: 2rem;
+  .access-request-screen a:hover {
+    text-decoration: underline;
   }
   
   .login-container {
@@ -669,15 +642,248 @@
   }
   </style>
   
-  <script src="https://unpkg.com/react@17/umd/react.development.js" crossOrigin="anonymous" w-tid="8"></script>
-  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossOrigin="anonymous" w-tid="9"></script>
-  <script src="https://unpkg.com/babel-standalone@6/babel.min.js" crossOrigin="anonymous" w-tid="10"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;700&display=swap" rel="stylesheet" w-tid="11"/>
+  <script src="https://unpkg.com/react@17/umd/react.development.js" crossOrigin="anonymous" w-tid="10"></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossOrigin="anonymous" w-tid="11"></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js" crossOrigin="anonymous" w-tid="12"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;700&display=swap" rel="stylesheet" w-tid="13"/>
   </head>
-  <body w-tid="12">
-  <div id="root" w-tid="13"></div>
+  <body w-tid="14">
+  <div id="root" w-tid="15"></div>
   
-  <script type="text/babel" w-tid="14">const WelcomeScreen = ({
+  <script type="text/babel" w-tid="16">const AccessRequestScreen = ({
+    onAccessRequestSent
+  }) => {
+    const [formData, setFormData] = React.useState({
+      email: ''
+    });
+    React.useEffect(() => {
+      const params = new URLSearchParams(window.location.search);
+      const action = params.get('action');
+      const email = params.get('email');
+      const id = params.get('id');
+      if (action === 'approve' && email && id) {
+        const approvedEmails = JSON.parse(localStorage.getItem('approvedEmails') || '[]');
+        if (!approvedEmails.includes(email)) {
+          const newApprovedEmails = [...approvedEmails, email];
+          localStorage.setItem('approvedEmails', JSON.stringify(newApprovedEmails));
+          alert('בקשת הגישה אושרה בהצלחה! המשתמש יכול כעת להיכנס למערכת');
+        }
+        window.history.replaceState({}, '', window.location.pathname);
+      }
+    }, []);
+    const checkAccess = async email => {
+      try {
+        const approvedEmails = JSON.parse(localStorage.getItem('approvedEmails') || '[]');
+        if (approvedEmails.includes(email)) {
+          onAccessRequestSent(true);
+        } else {
+          alert('האימייל שלך עדיין לא אושר. אנא בקש גישה דרך הטופס.');
+        }
+      } catch (error) {
+        alert('אירעה שגיאה בבדיקת הגישה');
+      }
+    };
+    return <div className="access-request-screen">
+        <h1>כניסה למערכת</h1>
+        <div className="form-group">
+          <label>אימייל</label>
+          <input type="email" required value={formData.email} onChange={e => setFormData({
+          ...formData,
+          email: e.target.value
+        })} />
+        </div>
+        <button onClick={() => checkAccess(formData.email)} className="start-button">
+          כניסה
+        </button>
+        <p>
+          אין לך גישה עדיין? 
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSezxd5AJFxgcLQ2En6jHfNbP5JsAvWZBUBM4HC77EewdlgAGw/viewform" target="_blank" rel="noopener noreferrer">
+            בקש גישה כאן
+          </a>
+        </p>
+      </div>;
+  };
+  const AdminPanel = ({
+    onUpdateQuestions,
+    onBack
+  }) => {
+    const [questions, setQuestions] = React.useState({
+      section1: ["שאלה 1", "שאלה 2"],
+      section2: ["שאלה 3", "שאלה 4"],
+      section3: ["שאלה 5", "שאלה 6"]
+    });
+    const [videoUrl, setVideoUrl] = React.useState('');
+    React.useEffect(() => {
+      const savedVideoUrl = localStorage.getItem('examVideoUrl');
+      if (savedVideoUrl) {
+        setVideoUrl(savedVideoUrl);
+      }
+    }, []);
+    const handleQuestionChange = (section, index, value) => {
+      const newQuestions = {
+        ...questions
+      };
+      newQuestions[section][index] = value;
+      setQuestions(newQuestions);
+    };
+    const addQuestion = section => {
+      const newQuestions = {
+        ...questions
+      };
+      newQuestions[section] = [...newQuestions[section], "שאלה "];
+      setQuestions(newQuestions);
+    };
+    const removeQuestion = (section, index) => {
+      const newQuestions = {
+        ...questions
+      };
+      newQuestions[section] = newQuestions[section].filter((_, i) => i !== index);
+      setQuestions(newQuestions);
+    };
+    const handleSave = () => {
+      let processedVideoUrl = videoUrl;
+      if (videoUrl) {
+        const youtubeRegex = /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:watch\?v=|embed\/)|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
+        const match = videoUrl.match(youtubeRegex);
+        if (match && match[1]) {
+          processedVideoUrl = `https://www.youtube.com/embed/${match[1]}`;
+        } else {
+          alert('שגיאה: קישור לוידאו לא תקין.');
+          return;
+        }
+      }
+      localStorage.setItem('examQuestions', JSON.stringify(questions));
+      localStorage.setItem('examVideoUrl', processedVideoUrl);
+      onUpdateQuestions(questions);
+      alert('נשמר בהצלחה!');
+    };
+    return <div className="admin-panel">
+        <button className="sidebar-button" style={{
+        marginBottom: '20px'
+      }} onClick={onBack}>
+          <i className="fas fa-arrow-right" />
+          חזור
+        </button>
+  
+        <h2>ערוך שאלות</h2>
+  
+        <div style={{
+        marginBottom: '2rem'
+      }}>
+          <h3>קישור לוידאו</h3>
+          <div className="form-group">
+            <input type="text" value={videoUrl} onChange={e => setVideoUrl(e.target.value)} placeholder="https://www.youtube.com/watch?v=VIDEO_ID" style={{
+            width: '100%',
+            padding: '0.5rem'
+          }} />
+            <small style={{
+            display: 'block',
+            marginTop: '0.5rem',
+            color: '#666'
+          }}>
+            קישור לוידאו:
+            <br />
+            - https://www.youtube.com/watch?v=VIDEO_ID
+            <br />
+            - https://youtu.be/VIDEO_ID
+            <br />
+            - https://www.youtube.com/embed/VIDEO_ID
+          </small>
+        </div>
+      </div>
+  
+        {Object.entries(questions).map(([section, sectionQuestions]) => <div key={section} className="question-editor">
+            <h3>מדור {section.replace('section', '')}</h3>
+            {sectionQuestions.map((question, index) => <div key={index} style={{
+          display: 'flex',
+          gap: '1rem',
+          marginBottom: '1rem'
+        }}>
+                <textarea value={question} onChange={e => handleQuestionChange(section, index, e.target.value)} style={{
+            flex: 1
+          }} />
+                <button onClick={() => removeQuestion(section, index)} className="delete-button">
+                  <i className="fas fa-trash" />
+                  מחק
+                </button>
+              </div>)}
+            <button onClick={() => addQuestion(section)} className="save-button" style={{
+          marginTop: '1rem'
+        }}>
+              <i className="fas fa-plus" />
+              הוסף שאלה
+            </button>
+          </div>)}
+        <button className="save-button" onClick={handleSave}>
+          <i className="fas fa-save" />
+          שמור
+        </button>
+      </div>;
+  };
+  const ExamApp = () => {
+    const [started, setStarted] = React.useState(false);
+    const [studentInfo, setStudentInfo] = React.useState(null);
+    const [currentSection, setCurrentSection] = React.useState(1);
+    const [examTimer, setExamTimer] = React.useState(30 * 60);
+    const [isAdmin, setIsAdmin] = React.useState(false);
+    const [hasAccess, setHasAccess] = React.useState(false);
+    const [showAccessRequest, setShowAccessRequest] = React.useState(true);
+    const [questions, setQuestions] = React.useState({
+      section1: ["שאלה 1", "שאלה 2"],
+      section2: ["שאלה 3", "שאלה 4"],
+      section3: ["שאלה 5", "שאלה 6"]
+    });
+    const [videoUrl, setVideoUrl] = React.useState('');
+    const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
+    const [windowWidth, setWindowWidth] = React.useState(window.innerWidth);
+    React.useEffect(() => {
+      const params = new URLSearchParams(window.location.search);
+      const action = params.get('action');
+      const email = params.get('email');
+      const id = params.get('id');
+      if (action === 'approve' && email && id) {
+        const approvedEmails = JSON.parse(localStorage.getItem('approvedEmails') || '[]');
+        if (!approvedEmails.includes(email)) {
+          const newApprovedEmails = [...approvedEmails, email];
+          localStorage.setItem('approvedEmails', JSON.stringify(newApprovedEmails));
+          alert('בקשת הגישה אושרה בהצלחה! המשתמש יכול כעת להיכנס למערכת');
+        }
+        window.history.replaceState({}, '', window.location.pathname);
+      }
+    }, []);
+    const checkAccess = async email => {
+      const approvedEmails = JSON.parse(localStorage.getItem('approvedEmails') || '[]');
+      return approvedEmails.includes(email);
+    };
+    const handleAccessRequestSent = async email => {
+      if (await checkAccess(email)) {
+        setHasAccess(true);
+        setShowAccessRequest(false);
+      }
+    };
+    const handleStart = formData => {
+      setStudentInfo(formData);
+      setStarted(true);
+    };
+    const handleAdminExit = () => {
+      setIsAdmin(false);
+    };
+    const toggleAdmin = () => {
+      setIsAdmin(true);
+    };
+    return <div>
+        {isAdmin ? <AdminPanel onUpdateQuestions={setQuestions} onBack={handleAdminExit} /> : !hasAccess ? <AccessRequestScreen onAccessRequestSent={handleAccessRequestSent} /> : !started ? <WelcomeScreen onStart={handleStart} /> : <div>
+            {windowWidth <= 768 && <React.Fragment>
+                <button className="mobile-menu-button" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
+                  <i className="fas fa-bars" />
+                </button>
+                {mobileMenuOpen && <div className="mobile-nav">
+                  </div>}
+              </React.Fragment>}
+          </div>}
+      </div>;
+  };
+  const WelcomeScreen = ({
     onStart
   }) => {
     const [formData, setFormData] = React.useState({
@@ -693,16 +899,16 @@
     return <div className="welcome-screen">
         <h1>ISpeak - ^2&#x5d1;2&#x5e8;2&#x5d9;4&#x5ea; &#x5de;&#x5e2;&#x5e8;&#x5db;&#x5ea;</h1>
         <p>
-          ^2&#x15e9;&#x15d0;&#x15e9;&#x15d5;&#x15e8;&#x15d5;&#x15ea; &#x15e2;&#x15d5;&#x15e8;&#x15d5;&#x15ea;, &#x15e2;&#x15d5;&#x15e8;&#x15d5;&#x15ea; &#x15d0;&#x15d5;&#x15e8;&#x15d5;&#x15ea; &#x15e2;&#x15d5;&#x15e8;&#x15d5;&#x15ea; &#x15d0;&#x15d5;&#x15e8;&#x15d5;&#x15ea; &#x15e2;&#x15d5;&#x15e8;&#x15d5;&#x15ea; &#x15d0;&#x15d5;&#x15e8;&#x15d5;&#x15ea;.
+          ^2&#x15e9;&#x15d0;&#x15e8;&#x15d5;&#x15e8;&#x15d5;&#x15ea; &#x15e2;&#x15d5;&#x15e8;&#x15d5;&#x15ea;, &#x15e2;&#x15d5;&#x15e8;&#x15d5;&#x15ea; &#x15d0;&#x15d5;&#x15e8;&#x15d5;&#x15ea; &#x15e2;&#x15d5;&#x15e8;&#x15d5;&#x15ea; &#x15d0;&#x15d5;&#x15e8;&#x15d5;&#x15ea; &#x15e2;&#x15d5;&#x15e8;&#x15d5;&#x15ea; &#x15d0;&#x15d5;&#x15e8;&#x15d5;&#x15ea;.
         </p>
         <p>
-          &#x15e9;&#x15d0;&#x15e8;&#x15d5;&#x15e8;&#x15d5;&#x15ea; &#x15e2;&#x15d5;&#x15e8;&#x15d5;&#x15ea; &#x15d0;&#x15d5;&#x15e8;&#x15d5;&#x15ea; &#x15e2;&#x15d5;&#x15e8;&#x15d5;&#x15ea; &#x15d0;&#x15d5;&#x15e8;&#x15d5;&#x15ea; &#x15e2;&#x15d5;&#x15e8;&#x15d5;&#x15ea; &#x15d0;&#x15d5;&#x15e8;&#x15d5;&#x15ea; &#x15e2;&#x15d5;&#x15e8;&#x15d5;&#x15ea; &#x15d0;&#x15d5;&#x15e8;&#x15d5;&#x15ea;.
+          &#x15e9;&#x15d0;&#x15e8;&#x15d5;&#x15e8; &#x15e2;&#x15d5;&#x15e8;&#x15d5;&#x15ea; &#x15d0;&#x15d5;&#x15e8;&#x15d5;&#x15ea; &#x15e2;&#x15d5;&#x15e8;&#x15d5;&#x15ea; &#x15d0;&#x15d5;&#x15e8;&#x15d5;&#x15ea; &#x15e2;&#x15d5;&#x15e8;&#x15d5;&#x15ea; &#x15d0;&#x15d5;&#x15e8;&#x15d5;&#x15ea; &#x15e2;&#x15d5;&#x15e8;&#x15d5;&#x15ea; &#x15d0;&#x15d5;&#x15e8;&#x15d5;&#x15ea;.
         </p>
         <p>
-          &#x15e9;&#x15d0;&#x15e8;&#x15d5;&#x15e8;&#x15d5;&#x15ea; &#x15e2;&#x15d5;&#x15e8;&#x15d5;&#x15ea; &#x15d0;&#x15d5;&#x15e8;&#x15d5;&#x15ea; &#x15e2;&#x15d5;&#x15e8;&#x15d5;&#x15ea; &#x15d0;&#x15d5;&#x15e8;&#x15d5;&#x15ea; &#x15e2;&#x15d5;&#x15e8;&#x15d5;&#x15ea; &#x15d0;&#x15d5;&#x15e8;&#x15d5;&#x15ea; &#x15e2;&#x15d5;&#x15e8;&#x15d5;&#x15ea; &#x15d0;&#x15d5;&#x15e8;&#x15d5;&#x15ea;.
+          &#x15e9;&#x15d0;&#x15e8;&#x15d5;&#x15e8; &#x15e2;&#x15d5;&#x15e8;&#x15d5;&#x15ea; &#x15d0;&#x15d5;&#x15e8;&#x15d5;&#x15ea; &#x15e2;&#x15d5;&#x15e8;&#x15d5;&#x15ea; &#x15d0;&#x15d5;&#x15e8;&#x15d5;&#x15ea; &#x15e2;&#x15d5;&#x15e8;&#x15d5;&#x15ea; &#x15d0;&#x15d5;&#x15e8;&#x15d5;&#x15ea; &#x15e2;&#x15d5;&#x15e8;&#x15d5;&#x15ea; &#x15d0;&#x15d5;&#x15e8;&#x15d5;&#x15ea;.
         </p>
         <p>
-          &#x15e9;&#x15d0;&#x15e8;&#x15d5;&#x15e8;&#x15d5;&#x15ea; &#x15e2;&#x15d5;&#x15e8;&#x15d5;&#x15ea; &#x15d0;&#x15d5;&#x15e8;&#x15d5;&#x15ea; &#x15e2;&#x15d5;&#x15e8;&#x15d5;&#x15ea; &#x15d0;&#x15d5;&#x15e8;&#x15d5;&#x15ea; &#x15e2;&#x15d5;&#x15e8;&#x15d5;&#x15ea; &#x15d0;&#x15d5;&#x15e8;&#x15d5;&#x15ea; &#x15e2;&#x15d5;&#x15e8;&#x15d5;&#x15ea; &#x15d0;&#x15d5;&#x15e8;&#x15d5;&#x15ea; &#x15e2;&#x15d5;&#x15e8;&#x15d5;&#x15ea; &#x15d0;&#x15d5;&#x15e8;&#x15d5;&#x15ea;!
+          &#x15e9;&#x15d0;&#x15e8;&#x15d5;&#x15e8; &#x15e2;&#x15d5;&#x15e8;&#x15d5;&#x15ea; &#x15d0;&#x15d5;&#x15e8;&#x15d5;&#x15ea; &#x15e2;&#x15d5;&#x15e8;&#x15d5;&#x15ea; &#x15d0;&#x15d5;&#x15e8;&#x15d5;&#x15ea; &#x15e2;&#x15d5;&#x15e8;&#x15d5;&#x15ea; &#x15d0;&#x15d5;&#x15e8;&#x15d5;&#x15ea; &#x15e2;&#x15d5;&#x15e8;&#x15d5;&#x15ea; &#x15d0;&#x15d5;&#x15e8;&#x15d5;&#x15ea; &#x15e2;&#x15d5;&#x15e8;&#x15d5;&#x15ea; &#x15d0;&#x15d5;&#x15e8;&#x15d5;&#x15ea;!
         </p>
         <form className="login-form" onSubmit={handleSubmit}>
           <div className="form-group">
@@ -738,160 +944,6 @@
         <button className="request-access-button">
           &#x15e9;&#x15d0;&#x15e8;&#x15d5;&#x15e8; &#x15e9;&#x15d0;&#x15e8;&#x15d5;&#x15e8;
         </button>
-      </div>;
-  };
-  const AdminPanel = ({
-    onUpdateQuestions,
-    onBack
-  }) => {
-    const [questions, setQuestions] = React.useState({
-      section1: ["&#x15e9;&#x15d0;&#x15e8;&#x15d5;&#x15e8; 1", "&#x15e9;&#x15d0;&#x15e8;&#x15d5;&#x15e8; 2"],
-      section2: ["&#x15e9;&#x15d0;&#x15e8;&#x15d5;&#x15e8; 3", "&#x15e9;&#x15d0;&#x15e8;&#x15d5;&#x15e8; 4"],
-      section3: ["&#x15e9;&#x15d0;&#x15e8;&#x15d5;&#x15e8; 5", "&#x15e9;&#x15d0;&#x15e8;&#x15d5;&#x15e8; 6"]
-    });
-    const [videoUrl, setVideoUrl] = React.useState('');
-    React.useEffect(() => {
-      const savedVideoUrl = localStorage.getItem('examVideoUrl');
-      if (savedVideoUrl) {
-        setVideoUrl(savedVideoUrl);
-      }
-    }, []);
-    const handleQuestionChange = (section, index, value) => {
-      const newQuestions = {
-        ...questions
-      };
-      newQuestions[section][index] = value;
-      setQuestions(newQuestions);
-    };
-    const addQuestion = section => {
-      const newQuestions = {
-        ...questions
-      };
-      newQuestions[section] = [...newQuestions[section], "&#x15e9;&#x15d0;&#x15e8;&#x15d5;&#x15e8; "];
-      setQuestions(newQuestions);
-    };
-    const removeQuestion = (section, index) => {
-      const newQuestions = {
-        ...questions
-      };
-      newQuestions[section] = newQuestions[section].filter((_, i) => i !== index);
-      setQuestions(newQuestions);
-    };
-    const handleSave = () => {
-      let processedVideoUrl = videoUrl;
-      if (videoUrl) {
-        const youtubeRegex = /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:watch\?v=|embed\/)|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
-        const match = videoUrl.match(youtubeRegex);
-        if (match && match[1]) {
-          processedVideoUrl = `https://www.youtube.com/embed/${match[1]}`;
-        } else {
-          alert('&#x15e9;&#x15d2;&#x15d9;&#x15d0;&#x15d4;: &#x15ea;&#x15d5;&#x15e8;&#x15d5;&#x15e8; &#x15d5;&#x15d9;&#x15d3;&#x15d0;&#x15d5; &#x15d5;&#x15d9;&#x15d0; &#x15d8;&#x15d9;&#x15e7;&#x15d9;&#x15e0;.');
-          return;
-        }
-      }
-      localStorage.setItem('examQuestions', JSON.stringify(questions));
-      localStorage.setItem('examVideoUrl', processedVideoUrl);
-      onUpdateQuestions(questions);
-      alert('&#x15d4;&#x15d5;&#x15e8;&#x15d5;&#x15ea; &#x15d4;&#x15d5;&#x15e8;&#x15d5;&#x15ea; &#x15d4;&#x15d5;&#x15e8;&#x15d5;&#x15ea; &#x15d5;&#x15d9;&#x15d2;&#x15e8;&#x15d4;!');
-    };
-    return <div className="admin-panel">
-        <button className="sidebar-button" style={{
-        marginBottom: '20px'
-      }} onClick={onBack}>
-          <i className="fas fa-arrow-right" />
-          &#x15d0;&#x15d5;&#x15e8;&#x15d5;&#x15e8; &#x15e9;&#x15d0;&#x15e8;&#x15d5;&#x15e8;
-        </button>
-  
-        <h2>&#x15de;&#x15dd;&#x15e7; &#x15de;&#x15d5;&#x15e8;&#x15d4; - &#x15e9;&#x15d0;&#x15e8;&#x15d5;&#x15e8;&#x15d5;&#x15ea;</h2>
-  
-        <div style={{
-        marginBottom: '2rem'
-      }}>
-          <h3>&#x15ea;&#x15d9;&#x15e9;&#x15d5;&#x15e8; &#x15d5;&#x15d9;&#x15d3;&#x15d0;&#x15d5;</h3>
-          <div className="form-group">
-            <input type="text" value={videoUrl} onChange={e => setVideoUrl(e.target.value)} placeholder="https://www.youtube.com/watch?v=VIDEO_ID" style={{
-            width: '100%',
-            padding: '0.5rem'
-          }} />
-            <small style={{
-            display: 'block',
-            marginTop: '0.5rem',
-            color: '#666'
-          }}>
-              &#x15d3;&#x15d5;&#x15d2;&#x15e1;&#x15d5;&#x15ea; &#x15d5;&#x15d9;&#x15d3;&#x15d0;&#x15d5;&#x15ea; &#x15d8;&#x15d9;&#x15e7;&#x15d9;&#x15e0;:
-              <br />
-              - https://www.youtube.com/watch?v=VIDEO_ID
-              <br />
-              - https://youtu.be/VIDEO_ID
-              <br />
-              - https://www.youtube.com/embed/VIDEO_ID
-            </small>
-          </div>
-        </div>
-  
-        {Object.entries(questions).map(([section, sectionQuestions]) => <div key={section} className="question-editor">
-            <h3>&#x15e7;&#x15e2;&#x15e8; {section.replace('section', '')}</h3>
-            {sectionQuestions.map((question, index) => <div key={index} style={{
-          display: 'flex',
-          gap: '1rem',
-          marginBottom: '1rem'
-        }}>
-                <textarea value={question} onChange={e => handleQuestionChange(section, index, e.target.value)} style={{
-            flex: 1
-          }} />
-                <button onClick={() => removeQuestion(section, index)} className="delete-button">
-                  <i className="fas fa-trash" />
-                  &#x15e9;&#x15d0;&#x15e8;&#x15d5;&#x15e8; &#x15e9;&#x15d0;&#x15e8;&#x15d5;&#x15e8;
-                </button>
-              </div>)}
-            <button onClick={() => addQuestion(section)} className="save-button" style={{
-          marginTop: '1rem'
-        }}>
-              <i className="fas fa-plus" />
-              &#x15d4;&#x15d5;&#x15e8;&#x15d5;&#x15ea; &#x15e9;&#x15d0;&#x15e8;&#x15d5;&#x15e8;
-            </button>
-          </div>)}
-        <button className="save-button" onClick={handleSave}>
-          <i className="fas fa-save" />
-          &#x15d4;&#x15d5;&#x15e8;&#x15d5;&#x15ea; &#x15d4;&#x15d5;&#x15e8;&#x15d5;&#x15ea;
-        </button>
-      </div>;
-  };
-  const AccessRequestScreen = ({
-    onAccessRequestSent
-  }) => {
-    return <div className="access-request-screen">
-        <h1>בקשת גישה למערכת</h1>
-        <p>על מנת להשתמש במערכת, אנא מלאו את הטופס הבא:</p>
-        <div className="google-form-container">
-          <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSezxd5AJFxgcLQ2En6jHfNbP5JsAvWZBUBM4HC77EewdlgAGw/viewform?embedded=true" width="100%" height="800px" frameBorder="0" marginHeight="0" marginWidth="0">
-            בטעינה...
-          </iframe>
-        </div>
-        <button onClick={onAccessRequestSent} className="return-button" style={{
-        marginTop: '20px'
-      }}>
-          חזור לדף הבית
-        </button>
-      </div>;
-  };
-  const LoginForm = ({
-    onLogin
-  }) => {
-    const [email, setEmail] = React.useState('');
-    const handleSubmit = e => {
-      e.preventDefault();
-      onLogin(email);
-    };
-    return <div className="login-form">
-        <h2>כניסה למערכת</h2>
-        <form onSubmit={handleSubmit}>
-          <div className="form-group">
-            <label>אימייל</label>
-            <input type="email" value={email} onChange={e => setEmail(e.target.value)} placeholder="הכנס את האימייל שאושר" required />
-          </div>
-          <button type="submit" className="start-button">כניסה</button>
-        </form>
       </div>;
   };
   const RecordingSection = ({
@@ -1020,89 +1072,6 @@
         {segments.length > 0 && <div className="recording-player">
             <h4>הקלטה מאוחדת</h4>
             <audio className="audio-player" controls src={combinedAudioUrl} />
-          </div>}
-      </div>;
-  };
-  const ExamApp = () => {
-    const [started, setStarted] = React.useState(false);
-    const [studentInfo, setStudentInfo] = React.useState(null);
-    const [currentSection, setCurrentSection] = React.useState(1);
-    const [examTimer, setExamTimer] = React.useState(30 * 60);
-    const [isAdmin, setIsAdmin] = React.useState(false);
-    const [showLogin, setShowLogin] = React.useState(true);
-    const [showAccessRequest, setShowAccessRequest] = React.useState(false);
-    const [isApproved, setIsApproved] = React.useState(false);
-    const [questions, setQuestions] = React.useState({
-      section1: ["שאלה 1", "שאלה 2"],
-      section2: ["שאלה 3", "שאלה 4"],
-      section3: ["שאלה 5", "שאלה 6"]
-    });
-    const [videoUrl, setVideoUrl] = React.useState('');
-    const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
-    const [windowWidth, setWindowWidth] = React.useState(window.innerWidth);
-    React.useEffect(() => {
-      const params = new URLSearchParams(window.location.search);
-      const emailToApprove = params.get('approve');
-      if (emailToApprove) {
-        const approvedEmails = JSON.parse(localStorage.getItem('approvedEmails') || '[]');
-        if (!approvedEmails.includes(emailToApprove)) {
-          const newApprovedEmails = [...approvedEmails, emailToApprove];
-          localStorage.setItem('approvedEmails', JSON.stringify(newApprovedEmails));
-          alert('בקשת הגישה אושרה בהצלחה! המשתמש יכול כעת להיכנס למערכת');
-        }
-        window.history.replaceState({}, '', window.location.pathname);
-      }
-    }, []);
-    const handleLogin = email => {
-      const approvedEmails = JSON.parse(localStorage.getItem('approvedEmails') || '[]');
-      if (approvedEmails.includes(email)) {
-        setIsApproved(true);
-        setShowLogin(false);
-        localStorage.setItem('currentUserEmail', email);
-        return true;
-      } else {
-        alert('האימייל שהוזן עדיין לא אושר. אנא המתן לאישור במייל.');
-        return false;
-      }
-    };
-    const handleAccessRequestSent = () => {
-      setShowAccessRequest(false);
-      setShowLogin(true);
-    };
-    const handleStart = formData => {
-      setStudentInfo(formData);
-      setStarted(true);
-    };
-    const handleAdminExit = () => {
-      setIsAdmin(false);
-    };
-    const toggleAdmin = () => {
-      setIsAdmin(true);
-    };
-    return <div>
-        {isAdmin ? <AdminPanel onUpdateQuestions={setQuestions} onBack={handleAdminExit} /> : !isApproved ? <div className="access-request-container">
-            <button className="admin-button" onClick={toggleAdmin}>
-              <i className="fas fa-user-cog" />
-              ממשק מורה
-            </button>
-            
-            {showAccessRequest ? <AccessRequestScreen onAccessRequestSent={handleAccessRequestSent} /> : <div>
-                <LoginForm onLogin={handleLogin} />
-                <button className="request-access-button" onClick={() => setShowAccessRequest(true)}>
-                  בקש גישה למערכת
-                </button>
-              </div>}
-          </div> : !started ? <WelcomeScreen onStart={handleStart} /> : <div>
-            {windowWidth <= 768 && <React.Fragment>
-                <button className="mobile-menu-button" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
-                  <i className="fas fa-bars" />
-                </button>
-  
-                {mobileMenuOpen && <div className="mobile-nav">
-                    {}
-                  </div>}
-              </React.Fragment>}
-            {}
           </div>}
       </div>;
   };
